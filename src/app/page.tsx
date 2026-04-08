@@ -9,6 +9,9 @@ import {
   Lightbulb,
 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import { news } from "@/data/news";
+
+const tickerItems = news.map((item) => item.title);
 
 const stats = [
   { target: 14, suffix: "+", label: "Azure Regions with ODB" },
@@ -60,15 +63,6 @@ const sections = [
     description: "Reference architectures, experiments, and what's next.",
     href: "/innovation-hub",
   },
-];
-
-const tickerItems = [
-  "Oracle Database@Azure now available in 14+ Azure regions",
-  "New best practice: Autonomous Database backup strategies on Azure",
-  "Community AMA with Oracle & Microsoft PMs — March 2026 recap",
-  "Agentic AI reference architecture published in Innovation Hub",
-  "OracleDB@Azure Exadata X11M support announced",
-  "Session recording: High availability patterns for mission-critical workloads",
 ];
 
 export default function HomePage() {
