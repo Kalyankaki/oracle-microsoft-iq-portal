@@ -14,10 +14,10 @@ import { news } from "@/data/news";
 const tickerItems = news.map((item) => item.title);
 
 const stats = [
-  { target: 14, suffix: "+", label: "Azure Regions with ODB" },
-  { target: 80, suffix: "+", label: "Best Practices" },
-  { target: 2400, suffix: "+", label: "Community Members" },
-  { target: 120, suffix: "+", label: "Sessions Indexed" },
+  { target: 33, suffix: "", label: "Azure Regions (All GA)" },
+  { target: 7, suffix: "", label: "Oracle Services on Azure" },
+  { target: 20, suffix: "", label: "Agentic AI Use Cases" },
+  { target: 15, suffix: "", label: "Best Practices" },
 ];
 
 const sections = [
