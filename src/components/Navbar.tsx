@@ -15,6 +15,7 @@ const navLinks = [
 ];
 
 const moreLinks = [
+  { label: "Product Corner", href: "/product-corner" },
   { label: "Migration", href: "/migration" },
   { label: "Architecture", href: "/architecture" },
   { label: "What's New", href: "/whats-new" },
