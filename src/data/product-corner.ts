@@ -66,111 +66,130 @@ export const valueProps: ValueProp[] = [
   },
 ];
 
-// ─── Competitive Comparison ──────────────────────────────────────
+// ─── Competitive Comparison: OracleDB@Azure vs OracleDB@AWS vs OracleDB@GCP ──
 
 export interface CompetitorComparison {
   feature: string;
   oracleAtAzure: string;
-  awsRds: string;
-  gcpBms: string;
+  oracleAtAws: string;
+  oracleAtGcp: string;
   category: string;
 }
 
+// Sources:
+// - OracleDB@Azure: https://learn.microsoft.com/en-us/azure/oracle/oracle-db/
+// - OracleDB@AWS: https://www.oracle.com/cloud/aws/ (GA July 2025)
+// - OracleDB@GCP: https://www.oracle.com/cloud/google/ (GA 2025)
+
 export const competitors: CompetitorComparison[] = [
   {
-    feature: "Infrastructure Location",
-    oracleAtAzure: "Oracle Exadata inside Azure datacenters — true co-location",
-    awsRds: "RDS Oracle runs on AWS EC2 instances — no Exadata, no RAC",
-    gcpBms: "Bare Metal hardware in GCP facilities — separate from GCP services",
-    category: "Architecture",
+    feature: "General Availability",
+    oracleAtAzure: "GA since December 2023. Most mature multicloud Oracle offering with 2+ years of production deployments.",
+    oracleAtAws: "GA July 2025 in initial regions. Newest of the three multicloud offerings, still expanding.",
+    oracleAtGcp: "GA in 2025. Expanding from initial regions with planned additions in Europe and Asia.",
+    category: "Maturity",
   },
   {
-    feature: "Database Service Breadth",
-    oracleAtAzure: "7 services: Exadata, Autonomous DB (Dedicated + Serverless), Exascale, Base DB, Recovery Service, GoldenGate",
-    awsRds: "RDS Oracle only (Standard/Enterprise). No Autonomous DB, no Exadata, no RAC support",
-    gcpBms: "Bare Metal for Oracle only. No managed Autonomous DB. No managed Exadata Cloud",
-    category: "Architecture",
+    feature: "Region Coverage",
+    oracleAtAzure: "33 Azure regions across Americas, Europe, APAC, and Middle East. 22 Multi-AZ regions. Broadest coverage.",
+    oracleAtAws: "9 AWS regions live (US East, West, Ohio, Canada, Frankfurt, Ireland, London, Tokyo, Sydney). More coming soon.",
+    oracleAtGcp: "~12 GCP regions live (US, Canada, Frankfurt, London, Tokyo, Sydney, Melbourne, Mumbai, São Paulo). Expanding.",
+    category: "Maturity",
   },
   {
-    feature: "Oracle RAC Support",
-    oracleAtAzure: "Full Oracle RAC on Exadata. Multi-node clusters for HA and scale",
-    awsRds: "No RAC support. Single-instance only with Multi-AZ standby",
-    gcpBms: "RAC possible on Bare Metal — customer must install and manage",
-    category: "Architecture",
+    feature: "Database Services Breadth",
+    oracleAtAzure: "7 services: Exadata Dedicated, Autonomous DB Dedicated, Autonomous DB Serverless, Exascale, Base DB, Recovery Service, GoldenGate.",
+    oracleAtAws: "2 services: Exadata Database Service on Dedicated Infrastructure, Autonomous AI Database on Dedicated Exadata.",
+    oracleAtGcp: "2 services: Oracle Autonomous AI Database, Oracle Exadata Database Service.",
+    category: "Services",
   },
   {
-    feature: "Autonomous Database",
-    oracleAtAzure: "Fully managed Autonomous DB with auto-patching, auto-tuning, auto-scaling — same as OCI",
-    awsRds: "Not available. Closest is Aurora, which is not Oracle-compatible",
-    gcpBms: "Not available. Must manually manage Oracle Database instances",
-    category: "Managed Services",
+    feature: "Oracle Base Database Service",
+    oracleAtAzure: "Available. ECPU-based, pay-as-you-go managed Oracle DB on virtual machines. Supports 19c and 23ai.",
+    oracleAtAws: "Not yet available. Only Exadata-based services offered at launch.",
+    oracleAtGcp: "Not yet available. Only Exadata and Autonomous DB offered.",
+    category: "Services",
   },
   {
-    feature: "Network Integration",
-    oracleAtAzure: "Direct Azure VNet integration via subnet delegation. No cross-cloud network hops",
-    awsRds: "Native VPC integration, but limited to RDS-supported features (no Exadata networking)",
-    gcpBms: "Partner Interconnect required for some configurations. Higher latency path for GCP services",
-    category: "Networking",
+    feature: "Exascale Infrastructure",
+    oracleAtAzure: "Available. Multitenant hyper-elastic Exadata with up to 95% lower minimum infrastructure costs vs dedicated.",
+    oracleAtAws: "Not yet available at launch.",
+    oracleAtGcp: "Not yet available.",
+    category: "Services",
   },
   {
-    feature: "Identity & Access",
-    oracleAtAzure: "Microsoft Entra ID federation. Azure RBAC for infrastructure. Single identity plane",
-    awsRds: "AWS IAM for RDS. No Oracle-specific identity federation",
-    gcpBms: "Google Cloud IAM for infrastructure. Separate Oracle identity management",
-    category: "Security",
+    feature: "Oracle GoldenGate",
+    oracleAtAzure: "Available in select regions. Managed real-time data replication and CDC for hybrid and migration scenarios.",
+    oracleAtAws: "Not listed as a standalone managed service at launch. Available through OCI integration.",
+    oracleAtGcp: "Not listed as a standalone managed service. Available through OCI integration.",
+    category: "Services",
   },
   {
-    feature: "Monitoring",
-    oracleAtAzure: "Native Azure Monitor metrics for all Oracle services. Unified dashboards out of the box",
-    awsRds: "CloudWatch metrics for RDS. Limited Oracle-specific visibility",
-    gcpBms: "Cloud Monitoring for infra only. No native Oracle DB metrics — must install agents",
-    category: "Operations",
+    feature: "Cloud-Native Identity Integration",
+    oracleAtAzure: "Microsoft Entra ID federation with OCI IAM. SSO, automated user/group provisioning, Azure RBAC for infrastructure. Deepest identity integration.",
+    oracleAtAws: "AWS IAM integration. Access management through AWS native identity. Integration depth being expanded.",
+    oracleAtGcp: "Google Cloud IAM integration. Single sign-on via Google Cloud identity services.",
+    category: "Integration",
+  },
+  {
+    feature: "Native Monitoring",
+    oracleAtAzure: "Azure Monitor publishes Exadata, VM Cluster, and Autonomous DB metrics natively. Custom dashboards out of the box. Deepest monitoring integration.",
+    oracleAtAws: "AWS CloudWatch and CloudTrail integration. Amazon EventBridge for event streaming. Monitoring expanding.",
+    oracleAtGcp: "Google Cloud monitoring integration. Logging and metrics through Google Cloud Operations suite.",
+    category: "Integration",
+  },
+  {
+    feature: "AI/ML Platform Integration",
+    oracleAtAzure: "Azure OpenAI Service + Oracle 23ai AI Vector Search + Select AI. Microsoft Fabric, Copilot, and Azure ML integration paths.",
+    oracleAtAws: "Amazon SageMaker, Amazon Bedrock, and Amazon Q integration. Zero-ETL connectors with AWS analytics services.",
+    oracleAtGcp: "Google Vertex AI and Gemini foundation models integration. AutoML and Google AI Platform connectivity.",
+    category: "Integration",
   },
   {
     feature: "Billing & Procurement",
-    oracleAtAzure: "Single Azure invoice. MACC-eligible. BYOL or License Included. Oracle Support Rewards",
-    awsRds: "AWS billing only. License Included only on RDS — BYOL requires self-managed EC2",
-    gcpBms: "GCP billing + separate Oracle license agreement. No integrated Oracle licensing",
+    oracleAtAzure: "Single Azure invoice. MACC-eligible (counts toward Azure committed spend). BYOL + License Included. Oracle Support Rewards.",
+    oracleAtAws: "Single AWS invoice. Qualifies for existing AWS spending commitments. BYOL + License Included. Oracle Support Rewards.",
+    oracleAtGcp: "Single Google Cloud Marketplace invoice. Unified billing through GCP. BYOL + License Included.",
     category: "Commercial",
   },
   {
-    feature: "Oracle Version Support",
-    oracleAtAzure: "11g through 23ai — full version range with upgrade support. Parity with OCI",
-    awsRds: "Limited versions (19c primarily). Lagging behind Oracle's latest releases",
-    gcpBms: "Customer installs any version — but no managed upgrade or patching service",
-    category: "Managed Services",
+    feature: "Network Architecture",
+    oracleAtAzure: "Direct VNet integration via Azure subnet delegation. No cross-cloud network hops. Advanced networking features with ExpressRoute FastPath.",
+    oracleAtAws: "VPC integration within AWS data centers. Low-latency connectivity to AWS services. VPC Lattice support.",
+    oracleAtGcp: "VPC integration within Google Cloud data centers. Connectivity to GKE, Cloud Run, and Compute Engine.",
+    category: "Networking",
   },
   {
-    feature: "Disaster Recovery",
-    oracleAtAzure: "Oracle Data Guard + Autonomous Data Guard over Azure/OCI backbone. No egress charges for DR",
-    awsRds: "RDS Multi-AZ (synchronous standby). Cross-region read replicas for DR — egress charges apply",
-    gcpBms: "Customer-managed Data Guard on Bare Metal. Cross-region replication costs apply",
+    feature: "Security & Compliance",
+    oracleAtAzure: "Azure Arc + Defender for Cloud. Azure Key Vault TDE integration (Premium + Managed HSM). Microsoft Sentinel SIEM. Microsoft Purview governance. Most security integrations.",
+    oracleAtAws: "AWS CloudTrail audit logging. AWS security service integration expanding. Standard encryption with customer-managed keys.",
+    oracleAtGcp: "Google Cloud security services integration. Encryption and access management through Google Cloud KMS.",
+    category: "Security",
+  },
+  {
+    feature: "Infrastructure Automation",
+    oracleAtAzure: "Terraform + OCI Landing Zone templates. Azure DevOps + ARM integration. Azure Automation runbooks for lifecycle management.",
+    oracleAtAws: "AWS CloudFormation support. Terraform providers. Infrastructure-as-Code for provisioning and management.",
+    oracleAtGcp: "Terraform providers. Google Cloud Developer Portal integration. Kubernetes-native deployment options.",
     category: "Operations",
   },
   {
-    feature: "Exadata Performance",
-    oracleAtAzure: "Full Exadata X9M with Smart Scan, Storage Indexes, RDMA — purpose-built for Oracle",
-    awsRds: "General-purpose EC2 storage (EBS/gp3). No Exadata hardware acceleration",
-    gcpBms: "Bare Metal servers — performant but no Exadata Smart Scan or storage offload",
-    category: "Architecture",
-  },
-  {
-    feature: "AI/ML Database Features",
-    oracleAtAzure: "Oracle 23ai with AI Vector Search, Select AI, ML models in-database + Azure OpenAI integration",
-    awsRds: "RDS Oracle 19c — no 23ai features. Must use SageMaker externally",
-    gcpBms: "Customer-installed 23ai possible — but no managed integration with Google AI services",
-    category: "AI/ML",
+    feature: "Disaster Recovery",
+    oracleAtAzure: "Oracle Data Guard + Autonomous Data Guard over Azure/OCI backbone. No egress charges for DR. 22 Multi-AZ regions for cross-zone HA.",
+    oracleAtAws: "Oracle Data Guard with cross-region replication. DR region pairing within AWS. Network charges may apply.",
+    oracleAtGcp: "Oracle Data Guard for HA/DR. Cross-region standby support. Growing region coverage for DR pairs.",
+    category: "Operations",
   },
 ];
 
 export const comparisonCategories = [
-  "Architecture",
-  "Managed Services",
+  "Maturity",
+  "Services",
+  "Integration",
   "Networking",
   "Security",
   "Operations",
   "Commercial",
-  "AI/ML",
 ];
 
 // ─── Product Ideas ──────────────────────────────────────────────

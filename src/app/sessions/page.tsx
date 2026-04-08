@@ -113,6 +113,17 @@ export default function SessionsPage() {
                       </span>
                     ))}
                   </div>
+
+                  {session.sessionUrl && (
+                    <a
+                      href={session.sessionUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-azure-blue transition-colors hover:text-white"
+                    >
+                      Watch Session →
+                    </a>
+                  )}
                 </div>
               </div>
             );

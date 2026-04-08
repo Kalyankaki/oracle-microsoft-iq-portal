@@ -94,11 +94,12 @@ export default function ProductCornerPage() {
         {/* ============================================================= */}
         <div className="mt-20">
           <h2 className="text-2xl font-bold text-white">
-            Competitive Comparison
+            Oracle Multicloud Comparison
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-muted">
-            How Oracle Database@Azure compares with Oracle database offerings on
-            other major cloud platforms.
+            How Oracle Database@Azure compares with Oracle Database@AWS and
+            Oracle Database@Google Cloud — all three are Oracle-managed Exadata
+            services co-located in the respective cloud provider&apos;s datacenters.
           </p>
 
           <div className="mt-6">
@@ -121,10 +122,10 @@ export default function ProductCornerPage() {
                     OracleDB@Azure
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-yellow-500">
-                    AWS RDS for Oracle
+                    OracleDB@AWS
                   </th>
                   <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-blue-400">
-                    GCP Bare Metal for Oracle
+                    OracleDB@Google Cloud
                   </th>
                 </tr>
               </thead>
@@ -146,10 +147,10 @@ export default function ProductCornerPage() {
                       {comp.oracleAtAzure}
                     </td>
                     <td className="px-4 py-4 text-sm text-muted">
-                      {comp.awsRds}
+                      {comp.oracleAtAws}
                     </td>
                     <td className="px-4 py-4 text-sm text-muted">
-                      {comp.gcpBms}
+                      {comp.oracleAtGcp}
                     </td>
                   </tr>
                 ))}
