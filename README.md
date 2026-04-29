@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oracle × Microsoft IQ — Progression Demo Portal
 
-## Getting Started
+A polished, production-ready demo portal that visually shows how AI agents grounded on
+Oracle Fusion data get progressively smarter as Microsoft IQ layers — **Fabric IQ**,
+**Foundry IQ**, **Work IQ** — are added on top.
 
-First, run the development server:
+The portal answers the same prompt four times, side-by-side, on synthetic Oracle
+Fusion-style data:
+
+1. **Baseline** — Microsoft Copilot + Oracle data mirrored into Fabric / OneLake (no IQ).
+2. **+ Fabric IQ** — semantic intelligence over the mirrored Oracle data.
+3. **+ Fabric IQ + Foundry IQ** — agent reasoning, retrieval, and grounding.
+4. **+ Fabric IQ + Foundry IQ + Work IQ** — personalized via Microsoft Graph.
+
+## Tech stack
+
+- Next.js 14 (App Router) · TypeScript · Tailwind CSS
+- `framer-motion` for tier transitions and IQ-badge animations
+- `lucide-react` for iconography
+- No database — all synthetic data lives in `src/lib/data/*.ts`
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 — you'll be redirected to `/tier/baseline` with the
+Supply Chain Risk scenario pre-loaded. Use the left sidebar to step through tiers,
+or click **Compare All** for the side-by-side view.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build   # production build
+npm run start   # serve the build
+```
 
-## Learn More
+The repo is ready to deploy to Vercel with zero config — point Vercel at this
+repository and it will detect Next.js automatically.
 
-To learn more about Next.js, take a look at the following resources:
+## Project layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  app/
+    layout.tsx                      # root layout (fonts, metadata)
+    page.tsx                        # redirects to /tier/baseline
+    globals.css
+    (portal)/
+      layout.tsx                    # shared portal shell (header + sidebar)
+      tier/[tierId]/page.tsx        # main demo view, per IQ tier
+      compare/page.tsx              # 2×2 compare-all view
+  components/
+    Header.tsx
+    Sidebar.tsx
+    ArchitectureStrip.tsx
+    IQBadge.tsx
+    ScenarioPicker.tsx
+    ChatExchange.tsx
+    ResponseBlocks.tsx
+    WhatChangedCallout.tsx
+    CompareGrid.tsx
+  lib/
+    utils.ts
+    data/
+      tiers.ts                      # tier metadata + enabled IQ layers
+      scenarios.ts                  # the three demo prompts
+      architecture.ts               # architecture stages + Purview
+      oracle-mirror.ts              # synthetic Oracle Fusion records
+      responses.ts                  # tier × scenario response matrix
+public/
+  logos/                            # SVG placeholders (no real brand marks)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes for the audience
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- All numbers, names, and account references are **synthetic**. No live system
+  is queried.
+- The architecture strip lights up progressively as IQ layers are enabled.
+  Microsoft Purview is shown as governing every stage at all times.
+- Tier 3 (Work IQ) intentionally feels more proactive and personal than Tier 2
+  — that contrast is the headline of the demo.

@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "OracleDB@Azure — Community Knowledge Hub",
+  title: "Oracle × Microsoft IQ — Progression Demo Portal",
   description:
-    "The definitive community hub for Oracle Database on Microsoft Azure. Best practices, architecture, sessions, and AI-powered assistance.",
+    "How AI agents grounded on Oracle Fusion data get progressively smarter as Microsoft IQ layers — Fabric IQ, Foundry IQ, Work IQ — are added. Executive demo portal.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
       <head>
@@ -24,14 +20,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased bg-charcoal text-white">
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+      <body className="min-h-screen font-sans antialiased text-white">
+        {children}
       </body>
     </html>
   );
