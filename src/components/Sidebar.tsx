@@ -33,7 +33,36 @@ export default function Sidebar() {
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r border-white/10 bg-navy-900/60">
-      <div className="px-5 pb-3 pt-5">
+      <div className="px-5 pb-2 pt-5">
+        <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+          Start here
+        </div>
+      </div>
+
+      <div className="px-3">
+        <Link
+          href="/exec-summary"
+          className={cn(
+            "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
+            isExecSummary
+              ? "border-iq-teal/40 bg-iq-teal/[0.08]"
+              : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]",
+          )}
+        >
+          <ClipboardList className="h-4 w-4 text-iq-teal" />
+          Exec Summary
+          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
+            Overview
+          </span>
+        </Link>
+        <div className="mt-1 px-3 text-[11px] text-muted">
+          Narrative, navigation, and bottom-line for all three scenarios.
+        </div>
+      </div>
+
+      <div className="mx-3 my-3 h-px bg-white/10" />
+
+      <div className="px-5 pb-3">
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
           IQ progression
         </div>
@@ -114,27 +143,6 @@ export default function Sidebar() {
         </Link>
         <div className="mt-1 px-3 text-[11px] text-muted">
           Same prompt, four tiers, side-by-side.
-        </div>
-      </div>
-
-      <div className="mt-3 px-3">
-        <Link
-          href="/exec-summary"
-          className={cn(
-            "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
-            isExecSummary
-              ? "border-white/10 bg-white/5"
-              : "border-transparent hover:border-white/10 hover:bg-white/[0.03]",
-          )}
-        >
-          <ClipboardList className="h-4 w-4 text-muted" />
-          Exec Summary
-          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
-            3-up
-          </span>
-        </Link>
-        <div className="mt-1 px-3 text-[11px] text-muted">
-          One page. All three scenarios. Bottom line.
         </div>
       </div>
 
