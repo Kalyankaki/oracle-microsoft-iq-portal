@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import ArchitectureStrip from "@/components/ArchitectureStrip";
 import ChatExchange from "@/components/ChatExchange";
+import EnablementStack from "@/components/EnablementStack";
 import ScenarioPicker from "@/components/ScenarioPicker";
 import { RESPONSES } from "@/lib/data/responses";
 import { SCENARIO_BY_ID, isScenarioId, type ScenarioId } from "@/lib/data/scenarios";
@@ -31,6 +32,7 @@ export default function TierPage({
   return (
     <div className="space-y-5">
       <ArchitectureStrip tier={tier} />
+      <EnablementStack tier={tier} />
       <Suspense
         fallback={<div className="h-32 rounded-xl border border-white/10 bg-white/[0.02]" />}
       >
