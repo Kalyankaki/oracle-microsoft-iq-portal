@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Layers, GitCompare } from "lucide-react";
+import { Layers, GitCompare, ClipboardList } from "lucide-react";
 import { TIERS, type IqLayer, type TierId } from "@/lib/data/tiers";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +29,7 @@ export default function Sidebar() {
 
   const activeTier = pathname.startsWith("/tier/") ? pathname.split("/")[2] : null;
   const isCompare = pathname.startsWith("/compare");
+  const isExecSummary = pathname.startsWith("/exec-summary");
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r border-white/10 bg-navy-900/60">
@@ -113,6 +114,27 @@ export default function Sidebar() {
         </Link>
         <div className="mt-1 px-3 text-[11px] text-muted">
           Same prompt, four tiers, side-by-side.
+        </div>
+      </div>
+
+      <div className="mt-3 px-3">
+        <Link
+          href="/exec-summary"
+          className={cn(
+            "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
+            isExecSummary
+              ? "border-white/10 bg-white/5"
+              : "border-transparent hover:border-white/10 hover:bg-white/[0.03]",
+          )}
+        >
+          <ClipboardList className="h-4 w-4 text-muted" />
+          Exec Summary
+          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
+            3-up
+          </span>
+        </Link>
+        <div className="mt-1 px-3 text-[11px] text-muted">
+          One page. All three scenarios. Bottom line.
         </div>
       </div>
 
