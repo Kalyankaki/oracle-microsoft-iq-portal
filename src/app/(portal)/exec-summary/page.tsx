@@ -1,17 +1,7 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  Boxes,
-  ClipboardList,
-  GitCompare,
-  HeartPulse,
-  Layers,
-  Quote,
-  UsersRound,
-} from "lucide-react";
-import { EXEC_SUMMARIES } from "@/lib/data/exec-summary";
+import { Boxes, ClipboardList, HeartPulse, UsersRound } from "lucide-react";
+import { SCENARIO_PROGRESSIONS } from "@/lib/data/exec-summary";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
-import { TIERS } from "@/lib/data/tiers";
+import { TIERS, type TierId } from "@/lib/data/tiers";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<ScenarioId, typeof Boxes> = {
@@ -20,10 +10,18 @@ const ICONS: Record<ScenarioId, typeof Boxes> = {
   "customer-health": HeartPulse,
 };
 
-const ACCENT: Record<ScenarioId, string> = {
-  "supply-chain": "border-azure-blue/30 text-azure-blue",
-  workforce: "border-iq-yellow/30 text-iq-yellow",
-  "customer-health": "border-iq-teal/30 text-iq-teal",
+const TIER_BORDER: Record<TierId, string> = {
+  baseline: "border-white/10",
+  fabric: "border-azure-blue/30",
+  foundry: "border-iq-yellow/30",
+  work: "border-iq-teal/30",
+};
+
+const TIER_BENEFIT_TEXT: Record<TierId, string> = {
+  baseline: "text-white/70",
+  fabric: "text-azure-blue",
+  foundry: "text-iq-yellow",
+  work: "text-iq-teal",
 };
 
 export default function ExecSummaryPage() {
@@ -66,10 +64,7 @@ export default function ExecSummaryPage() {
               key={tier.id}
               className={cn(
                 "rounded-xl border bg-white/[0.02] p-3",
-                tier.accent === "slate" && "border-white/10",
-                tier.accent === "azure" && "border-azure-blue/30",
-                tier.accent === "yellow" && "border-iq-yellow/30",
-                tier.accent === "teal" && "border-iq-teal/30",
+                TIER_BORDER[tier.id],
               )}
             >
               <div className="flex items-center justify-between">
@@ -93,211 +88,94 @@ export default function ExecSummaryPage() {
 
       <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-          How to navigate
+          Across all three scenarios
         </div>
         <div className="mt-1 text-base font-semibold tracking-tight">
-          Three ways to walk through the demo
+          The Copilot experience improves the same way every time
         </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-3">
-          <Link
-            href="/tier/baseline?scenario=supply-chain"
-            className="group rounded-xl border border-white/10 bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.04]"
-          >
-            <div className="flex items-center gap-2">
-              <Layers className="h-4 w-4 text-muted" />
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-                Step 1
-              </div>
-            </div>
-            <div className="mt-1 text-sm font-semibold">Walk the tiers</div>
-            <p className="mt-1 text-[12px] leading-relaxed text-white/75">
-              Open Baseline → Fabric IQ → Foundry IQ → Work IQ to see the answer evolve as
-              each layer turns on.
-            </p>
-            <div className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-azure-blue">
-              Start at Baseline <ArrowRight className="h-3 w-3" />
-            </div>
-          </Link>
-
-          <Link
-            href="/compare?scenario=supply-chain"
-            className="group rounded-xl border border-white/10 bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.04]"
-          >
-            <div className="flex items-center gap-2">
-              <GitCompare className="h-4 w-4 text-muted" />
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-                Step 2
-              </div>
-            </div>
-            <div className="mt-1 text-sm font-semibold">Compare side-by-side</div>
-            <p className="mt-1 text-[12px] leading-relaxed text-white/75">
-              All four tier responses to the same prompt, on one screen — the cleanest way to
-              see what each IQ adds.
-            </p>
-            <div className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-iq-yellow">
-              Open Compare All <ArrowRight className="h-3 w-3" />
-            </div>
-          </Link>
-
-          <div className="rounded-xl border border-iq-teal/30 bg-iq-teal/[0.05] p-4">
-            <div className="flex items-center gap-2">
-              <ClipboardList className="h-4 w-4 text-iq-teal" />
-              <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-                Step 3 · you are here
-              </div>
-            </div>
-            <div className="mt-1 text-sm font-semibold">Read the bottom line</div>
-            <p className="mt-1 text-[12px] leading-relaxed text-white/75">
-              The cards below summarize what the full stack delivers across all three scenarios:
-              numbers, top actions, and the decisions that need you.
-            </p>
-            <div className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-iq-teal">
-              Keep scrolling <ArrowRight className="h-3 w-3" />
-            </div>
-          </div>
-        </div>
+        <p className="mt-2 max-w-3xl text-[12.5px] leading-relaxed text-white/75">
+          One row per scenario, one card per IQ layer. Each card shows what Copilot delivers at
+          that tier — and the business benefit it unlocks.
+        </p>
       </section>
 
-      <section>
-        <div className="mb-3 flex items-end justify-between">
-          <div>
-            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-              Bottom line · all three scenarios
-            </div>
-            <div className="text-base font-semibold tracking-tight">
-              What the full stack produces — Foundry IQ view, grounded in Oracle Fusion
-            </div>
-          </div>
-          <div className="hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
-            Synthetic data · no live systems queried
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          {SCENARIOS.map((s) => {
-            const summary = EXEC_SUMMARIES[s.id];
-            const Icon = ICONS[s.id];
-            return (
-              <article
-                key={s.id}
-                className={cn(
-                  "rounded-2xl border bg-navy-900/70 p-5",
-                  s.id === "supply-chain" && "border-azure-blue/30",
-                  s.id === "workforce" && "border-iq-yellow/30",
-                  s.id === "customer-health" && "border-iq-teal/30",
-                )}
-              >
-                <div className="flex flex-wrap items-start gap-3">
-                  <div
-                    className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-white/5",
-                      ACCENT[s.id],
-                    )}
-                  >
-                    <Icon className="h-5 w-5" strokeWidth={2} />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-                      {s.domain}
-                    </div>
-                    <div className="text-base font-semibold tracking-tight">{s.label}</div>
-                    <p className="mt-2 text-[13.5px] font-medium leading-relaxed text-white">
-                      {summary.headline}
-                    </p>
-                    <p className="mt-2 text-[12.5px] leading-relaxed text-white/80">
-                      {summary.bottomLine}
-                    </p>
-                  </div>
-                  <Link
-                    href={`/compare?scenario=${s.id}`}
-                    className="hidden shrink-0 items-center gap-1 rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted transition hover:border-white/20 hover:text-white md:inline-flex"
-                  >
-                    See all tiers <ArrowRight className="h-3 w-3" />
-                  </Link>
+      <div className="space-y-4">
+        {SCENARIOS.map((s) => {
+          const progression = SCENARIO_PROGRESSIONS[s.id];
+          const Icon = ICONS[s.id];
+          return (
+            <section
+              key={s.id}
+              className={cn(
+                "rounded-2xl border bg-navy-900/70 p-5",
+                s.id === "supply-chain" && "border-azure-blue/30",
+                s.id === "workforce" && "border-iq-yellow/30",
+                s.id === "customer-health" && "border-iq-teal/30",
+              )}
+            >
+              <div className="flex flex-wrap items-start gap-3">
+                <div
+                  className={cn(
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-white/5",
+                    s.id === "supply-chain" && "border-azure-blue/30 text-azure-blue",
+                    s.id === "workforce" && "border-iq-yellow/30 text-iq-yellow",
+                    s.id === "customer-health" && "border-iq-teal/30 text-iq-teal",
+                  )}
+                >
+                  <Icon className="h-5 w-5" strokeWidth={2} />
                 </div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+                    {s.domain}
+                  </div>
+                  <div className="text-base font-semibold tracking-tight">{s.label}</div>
+                  <p className="mt-1.5 text-[12.5px] italic leading-relaxed text-white/75">
+                    “{progression.question}”
+                  </p>
+                </div>
+              </div>
 
-                <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-4">
-                  {summary.kpis.map((kpi, idx) => (
+              <div className="mt-4 grid gap-3 md:grid-cols-4">
+                {TIERS.map((tier) => {
+                  const step = progression.steps[tier.id];
+                  return (
                     <div
-                      key={idx}
-                      className="rounded-lg border border-white/10 bg-white/[0.03] p-3"
+                      key={tier.id}
+                      className={cn(
+                        "flex flex-col rounded-xl border bg-white/[0.02] p-3",
+                        TIER_BORDER[tier.id],
+                      )}
                     >
                       <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
-                        {kpi.label}
+                        T{tier.index} · {tier.shortLabel}
                       </div>
-                      <div className="mt-1 text-base font-semibold tracking-tight md:text-lg">
-                        {kpi.value}
+                      <div className="mt-1 text-[13px] font-semibold tracking-tight">
+                        {tier.label}
                       </div>
-                      {kpi.trend && (
-                        <div className="mt-0.5 text-[11px] text-muted">{kpi.trend}</div>
-                      )}
+                      <p className="mt-2 text-[12px] leading-relaxed text-white/85">
+                        {step.delivers}
+                      </p>
+                      <div className="mt-3 border-t border-white/10 pt-2">
+                        <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                          Business benefit
+                        </div>
+                        <p
+                          className={cn(
+                            "mt-1 text-[11.5px] leading-snug",
+                            TIER_BENEFIT_TEXT[tier.id],
+                          )}
+                        >
+                          {step.benefit}
+                        </p>
+                      </div>
                     </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 grid gap-4 md:grid-cols-[1.4fr,1fr]">
-                  <div className="overflow-hidden rounded-lg border border-white/10">
-                    <div className="border-b border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-muted">
-                      Top actions
-                    </div>
-                    <table className="w-full text-left">
-                      <thead>
-                        <tr className="bg-white/[0.02]">
-                          <th className="border-b border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-muted">
-                            Action
-                          </th>
-                          <th className="border-b border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-muted">
-                            Owner
-                          </th>
-                          <th className="border-b border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-muted">
-                            Impact
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {summary.topActions.map((a, idx) => (
-                          <tr
-                            key={idx}
-                            className="border-t border-white/5 odd:bg-white/[0.015]"
-                          >
-                            <td className="px-3 py-2 align-top text-[12.5px] font-medium">
-                              {a.label}
-                            </td>
-                            <td className="px-3 py-2 align-top text-[12.5px] text-white/85">
-                              {a.owner}
-                            </td>
-                            <td className="px-3 py-2 align-top text-[12.5px] text-white/85">
-                              {a.impact}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div className="rounded-lg border border-white/10 bg-white/[0.02] p-3">
-                    <div className="mb-2 font-mono text-[10px] uppercase tracking-widest text-muted">
-                      Decisions needed from you
-                    </div>
-                    <ul className="space-y-1.5 pl-5 text-[12.5px] leading-relaxed text-white/85 marker:text-muted">
-                      {summary.decisionsNeeded.map((d, idx) => (
-                        <li key={idx} className="list-disc">
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-3 flex items-center gap-1.5 font-mono text-[10px] text-muted">
-                  <Quote className="h-3 w-3" />
-                  Source · {summary.citation}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
+      </div>
     </div>
   );
 }

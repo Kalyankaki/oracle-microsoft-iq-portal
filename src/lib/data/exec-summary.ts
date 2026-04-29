@@ -1,131 +1,85 @@
 import type { ScenarioId } from "./scenarios";
+import type { TierId } from "./tiers";
 
-export interface ExecKpi {
-  label: string;
-  value: string;
-  trend?: string;
+export interface ScenarioTierStep {
+  delivers: string;
+  benefit: string;
 }
 
-export interface ExecAction {
-  label: string;
-  owner: string;
-  impact: string;
-}
-
-export interface ExecSummary {
+export interface ScenarioProgression {
   scenarioId: ScenarioId;
-  headline: string;
-  bottomLine: string;
-  kpis: ExecKpi[];
-  topActions: ExecAction[];
-  decisionsNeeded: string[];
-  citation: string;
+  question: string;
+  steps: Record<TierId, ScenarioTierStep>;
 }
 
-export const EXEC_SUMMARIES: Record<ScenarioId, ExecSummary> = {
+export const SCENARIO_PROGRESSIONS: Record<ScenarioId, ScenarioProgression> = {
   "supply-chain": {
     scenarioId: "supply-chain",
-    headline: "EMEA Q3 supply risk is concentrated in two suppliers — $18.6M is mitigatable inside the quarter.",
-    bottomLine:
-      "Adriatica and Helvetia together carry 30% of EMEA spend with on-time delivery in the low 80s. Qualified secondary sources already exist in the supplier master, so the fastest moves are dual-sourcing and an SLA refresh — no re-bid required.",
-    kpis: [
-      { label: "Q3 EMEA exposure", value: "$47.2M", trend: "+6.1% QoQ" },
-      { label: "Risk score (avg)", value: "74 / 100", trend: "+11 QoQ" },
-      { label: "Mitigatable by Q4", value: "$18.6M" },
-      { label: "On-time delivery", value: "87%", trend: "↓ from 94%" },
-    ],
-    topActions: [
-      {
-        label: "Dual-source 25% of Adriatica volume to Nordic Forge",
-        owner: "Maria Chen · Procurement",
-        impact: "$2.1M risk averted",
+    question:
+      "What's our Q3 supply chain risk exposure in EMEA, and which suppliers should we de-risk first?",
+    steps: {
+      baseline: {
+        delivers: "Lists the Oracle SCM tables that hold suppliers, POs, and delivery records.",
+        benefit: "Foundation in place — Oracle data is mirrored and ready, but answers stay generic.",
       },
-      {
-        label: "SLA refresh + 60-day buffer stock with Helvetia",
-        owner: "Legal · Procurement",
-        impact: "$1.4M risk averted",
+      fabric: {
+        delivers: "$47.2M EMEA exposure quantified across 84 suppliers; OTD ↓ to 87%.",
+        benefit: "Risk visibility moves from anecdotes to a defensible number, instantly.",
       },
-      {
-        label: "Re-route Iberian inbound through Rotterdam hub",
-        owner: "Tomás Ruiz · Logistics",
-        impact: "$0.7M risk averted",
+      foundry: {
+        delivers: "5 prioritized de-risk plays with $18.6M mitigatable inside Q3.",
+        benefit: "Action plan with projected savings — no analyst week required.",
       },
-    ],
-    decisionsNeeded: [
-      "Approve 25% volume shift from Adriatica to Nordic Forge",
-      "Approve 6-week pilot for the Iberia → Rotterdam re-route",
-      "Confirm escalation thresholds in the Helvetia SLA refresh",
-    ],
-    citation: "Oracle Fusion SCM · Supplier_Risk_View · Supplier_Master",
+      work: {
+        delivers: "Email to Maria, Teams ping to Tomás, and tomorrow's 10am agenda — drafted.",
+        benefit: "Decisions executed at the speed of a chat; supplier risk doesn't wait a week.",
+      },
+    },
   },
   workforce: {
     scenarioId: "workforce",
-    headline: "5 of 14 open reqs are at risk of missing FY close — 3 are recoverable with action this week.",
-    bottomLine:
-      "Two reqs need a re-scope or internal-mobility move now; the rest can close on plan if offers move this week. The Staff DS req can't fill a P6 in time — splitting it into two P5s clears the FY math.",
-    kpis: [
-      { label: "Open reqs", value: "14" },
-      { label: "At-risk for FY close", value: "5" },
-      { label: "Recoverable with action", value: "3" },
-      { label: "Projected close rate", value: "79%", trend: "+18 pts with plan" },
-    ],
-    topActions: [
-      {
-        label: "Re-scope REQ-44188 (Staff DS) into 2× P5 reqs",
-        owner: "Janelle · Talent",
-        impact: "Closes by Q4 W4",
+    question:
+      "Summarize open requisitions on my team and flag any that are at risk of missing the fiscal-year close.",
+    steps: {
+      baseline: {
+        delivers: "Names the HCM tables for requisitions, pipeline, and offers.",
+        benefit: "Knows the data exists — but can't yet resolve which reqs are 'on your team.'",
       },
-      {
-        label: "Open REQ-44260 (Eng Mgr) to internal mobility",
-        owner: "Diego · Skip-level",
-        impact: "Closes by Q4 W1",
+      fabric: {
+        delivers: "14 open reqs · 5 at FY-close risk · pipeline coverage ↓ to 3.4×.",
+        benefit: "FY hiring health visible on one screen, scoped to your org rollup.",
       },
-      {
-        label: "Push REQ-44120 (Sr. Platform Eng) to offer",
-        owner: "Marco · Recruiter",
-        impact: "Closes by Q3 W12",
+      foundry: {
+        delivers: "Per-req recommendation: re-scope, push to offer, or open to internal mobility.",
+        benefit: "Hiring plan that actually closes by FY end — projected close rate +18 pts.",
       },
-    ],
-    decisionsNeeded: [
-      "Approve splitting REQ-44188 into two P5 reqs",
-      "Approve internal-mobility path for Aisha (REQ-44260)",
-      "Green-light the Sr. Platform Eng offer this week",
-    ],
-    citation: "Oracle Fusion HCM · Recruiting_Pipeline · Talent_Marketplace",
+      work: {
+        delivers: "Friday review with Diego pre-filled; 1:1 agenda for Aisha drafted.",
+        benefit: "Manager time goes to deciding, not to prepping pre-reads.",
+      },
+    },
   },
   "customer-health": {
     scenarioId: "customer-health",
-    headline: "$6.0M ARR is at risk across 4 accounts — $4.6M is recoverable with the right play per account.",
-    bottomLine:
-      "Northwind is the highest-value save and the QBR is already on the calendar — lead with a value review and an exec sponsor intro. Contoso needs a joint resolution plan with CS before the Friday CXO call.",
-    kpis: [
-      { label: "ARR at risk", value: "$6.0M" },
-      { label: "Recoverable with plays", value: "$4.6M" },
-      { label: "At-risk accounts", value: "4 of 32" },
-      { label: "Avg health score", value: "62 / 100", trend: "↓ 5 QoQ" },
-    ],
-    topActions: [
-      {
-        label: "Northwind: exec sponsor intro + value review",
-        owner: "Sam (you) + Liam · CS",
-        impact: "Save $2.0M of $2.4M",
+    question:
+      "Which accounts in my book are showing churn signals, and what's the recommended next play for each?",
+    steps: {
+      baseline: {
+        delivers: "Points at the CX tables for accounts, health, and service requests.",
+        benefit: "Foundation only — can't yet score churn or scope to your book of business.",
       },
-      {
-        label: "Contoso: joint resolution plan + CXO escalation",
-        owner: "Sam (you) + Liam · CS",
-        impact: "Save $1.5M of $1.8M",
+      fabric: {
+        delivers: "32 accounts · 4 at risk · $6.0M ARR exposed.",
+        benefit: "Churn risk surfaces early, with the dollars attached.",
       },
-      {
-        label: "Fabrikam: targeted adoption sprint on procurement workflow",
-        owner: "CS · Solutions",
-        impact: "Save $0.7M of $1.2M",
+      foundry: {
+        delivers: "Right play per account; $4.6M of the $6.0M is recoverable.",
+        benefit: "CSMs lead with the highest-yield save play, not a generic check-in.",
       },
-    ],
-    decisionsNeeded: [
-      "Approve exec sponsor intro for Northwind's new VP Ops",
-      "Confirm CXO talking points for Friday's Contoso call",
-      "Sequence Fabrikam adoption sprint vs. Tailwind champion replacement",
-    ],
-    citation: "Oracle Fusion CX · Account_Health · Service_Requests",
+      work: {
+        delivers: "Northwind QBR pre-loaded; Contoso CXO call prep with Liam ready.",
+        benefit: "The save motion is in the calendar before the customer calls you.",
+      },
+    },
   },
 };
