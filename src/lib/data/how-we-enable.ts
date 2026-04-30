@@ -73,6 +73,162 @@ export const INTEGRATION_PATTERNS: IntegrationPattern[] = [
   },
 ];
 
+export type MaturityStatus = "ga" | "in-flight" | "planned";
+
+export interface MaturityRow {
+  id: string;
+  capability: string;
+  status: MaturityStatus;
+  ships: string;
+  notes: string;
+}
+
+export const MATURITY_ROWS: MaturityRow[] = [
+  {
+    id: "p1",
+    capability: "P1 · Oracle → OneLake mirror (Fabric Mirroring + GoldenGate)",
+    status: "ga",
+    ships: "Available now",
+    notes: "Generally available with Oracle Database@Azure; native Fabric integration shipped at Ignite 2025.",
+  },
+  {
+    id: "ontology",
+    capability: "Ontology Bridge accelerator",
+    status: "in-flight",
+    ships: "Phase 1 · next 2 quarters",
+    notes: "First three domains (SCM, HCM, CX) targeted for Phase 1; pilot underway with reference customers.",
+  },
+  {
+    id: "p2",
+    capability: "P2 · Foundry agents in Copilot via Agents 365 (A365) + A2A",
+    status: "in-flight",
+    ships: "Phase 2 · H2",
+    notes: "A365 control plane in preview from Ignite 2025; A2A protocol stable, multi-agent flows in pilot.",
+  },
+  {
+    id: "governance",
+    capability: "Governance Bridge (Oracle Data Safe ↔ Microsoft Purview)",
+    status: "in-flight",
+    ships: "Phase 2 · H2",
+    notes: "Sensitivity-label flow and lineage interop in private preview. Joint reference architecture targeted for GA.",
+  },
+  {
+    id: "p3",
+    capability: "P3 · Oracle agents via MCP servers",
+    status: "planned",
+    ships: "Phase 3 · Year 2",
+    notes: "Reference MCP server templates for Fusion Apps planned. Early-access design partners being onboarded.",
+  },
+  {
+    id: "blueprints",
+    capability: "Industry blueprints (Banking · Mfg · Retail · Public Sector)",
+    status: "planned",
+    ships: "Phase 3 · Year 2",
+    notes: "Vertical templates packaged with SI partners (Accenture, Deloitte, EY, Capgemini).",
+  },
+];
+
+export interface CrossCuttingCapability {
+  id: string;
+  title: string;
+  oneLiner: string;
+  oracle: string;
+  microsoft: string;
+}
+
+export const CROSS_CUTTING: CrossCuttingCapability[] = [
+  {
+    id: "identity",
+    title: "Identity & access",
+    oneLiner: "One identity, least-privilege scope, end-to-end.",
+    oracle: "Oracle IAM · Fusion roles",
+    microsoft: "Microsoft Entra ID · Conditional Access · M365 Graph permissions",
+  },
+  {
+    id: "observability",
+    title: "Observability & telemetry",
+    oneLiner: "See what every agent did, why, and on whose data.",
+    oracle: "Oracle audit trails · Database activity",
+    microsoft: "Foundry traces · Application Insights · Purview audit",
+  },
+  {
+    id: "quality",
+    title: "Quality & evals",
+    oneLiner: "Production agents need golden datasets and regression suites.",
+    oracle: "Oracle reference datasets · Fusion test fixtures",
+    microsoft: "Foundry evals · prompt regression · A/B traffic splits",
+  },
+  {
+    id: "cost",
+    title: "Cost & FinOps",
+    oneLiner: "Predict and control agent spend before it surprises Finance.",
+    oracle: "OCI cost analytics · Database@Azure metering",
+    microsoft: "Azure Cost Management · Foundry token billing · Copilot per-seat",
+  },
+  {
+    id: "reliability",
+    title: "Reliability & SLA",
+    oneLiner: "Joint SLA with single point of accountability per workflow.",
+    oracle: "Oracle Cloud SLAs · GoldenGate replication SLAs",
+    microsoft: "Azure SLA · Copilot availability commitments · Foundry uptime",
+  },
+  {
+    id: "standards",
+    title: "Open standards",
+    oneLiner: "Built on open protocols — not a proprietary lock-in.",
+    oracle: "OData · OpenAPI · OAuth 2.0",
+    microsoft: "MCP · A2A · OpenLineage · OAuth 2.0",
+  },
+];
+
+export interface IndustryBlueprint {
+  id: string;
+  industry: string;
+  flagship: string;
+  oracleAnchor: string;
+  microsoftSurface: string;
+  signature: string;
+}
+
+export const INDUSTRY_BLUEPRINTS: IndustryBlueprint[] = [
+  {
+    id: "banking",
+    industry: "Banking & Capital Markets",
+    flagship: "Loan-portfolio risk agent",
+    oracleAnchor: "Oracle Financial Services Analytical Apps · Fusion ERP",
+    microsoftSurface: "Copilot in Teams for relationship managers; Outlook drafts to risk committee",
+    signature:
+      "Concentration, covenant breaches, and refinancing risk surfaced with grounded citations to OFSAA — actions queued for the Friday risk-committee meeting.",
+  },
+  {
+    id: "manufacturing",
+    industry: "Manufacturing & Supply Chain",
+    flagship: "Plant performance + supplier-risk agent",
+    oracleAnchor: "Oracle Fusion SCM · Procurement · IoT Cloud",
+    microsoftSurface: "Copilot on Teams Walls in plant ops rooms; Outlook to supplier owners",
+    signature:
+      "OEE drift, yield drops, and supplier delivery risk merged into one prioritized worklist, with corrective actions pre-drafted for the line lead.",
+  },
+  {
+    id: "retail",
+    industry: "Retail & Consumer",
+    flagship: "Inventory + customer-health agent",
+    oracleAnchor: "Oracle Retail Suite · Fusion CX · Loyalty",
+    microsoftSurface: "Copilot for store managers; Teams escalations to district leadership",
+    signature:
+      "Stock-out risk by SKU + segment churn signals stitched together; replenishment requests and CRM plays drafted in one place, ready to ship.",
+  },
+  {
+    id: "public-sector",
+    industry: "Public Sector",
+    flagship: "Citizen-service + grants agent",
+    oracleAnchor: "Oracle Public Sector Cloud · Fusion HCM",
+    microsoftSurface: "Copilot for caseworkers; M365 Graph for case routing and SLA",
+    signature:
+      "Case priority, SLA risk, and grant-eligibility logic computed end-to-end. Outputs respect Oracle Data Safe classifications enforced through Purview.",
+  },
+];
+
 export const ACCELERATORS: Accelerator[] = [
   {
     id: "ontology-bridge",
