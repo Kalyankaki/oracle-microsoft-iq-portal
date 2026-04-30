@@ -75,6 +75,220 @@ export const INTEGRATION_PATTERNS: IntegrationPattern[] = [
 
 export type MaturityStatus = "ga" | "in-flight" | "planned";
 
+export interface OracleDataLocation {
+  id: string;
+  name: string;
+  description: string;
+  ingestPattern: string;
+  unlockedFor: string;
+  isFlagship?: boolean;
+}
+
+export const ORACLE_DATA_LOCATIONS: OracleDataLocation[] = [
+  {
+    id: "fusion-saas",
+    name: "Oracle Fusion (SaaS)",
+    description:
+      "Fusion ERP, HCM, SCM, CX — the system of record for most of the Fortune 2000.",
+    ingestPattern: "Fabric Mirroring · GoldenGate Free",
+    unlockedFor: "Out-of-the-box for Fusion modules; the demo today.",
+    isFlagship: true,
+  },
+  {
+    id: "database-azure",
+    name: "Oracle Database@Azure",
+    description:
+      "Oracle databases running natively in Azure data centres — Exadata, Autonomous, Database Service.",
+    ingestPattern: "Native Fabric Mirroring (announced Ignite 2025)",
+    unlockedFor: "Lowest-latency path; preserves Oracle-native features.",
+  },
+  {
+    id: "oci",
+    name: "Oracle on OCI / Exadata Cloud",
+    description:
+      "Oracle databases on Oracle Cloud Infrastructure — Exadata Cloud, Autonomous Database, Database Cloud Service.",
+    ingestPattern: "Fabric Shortcuts · GoldenGate · OCI Object Storage",
+    unlockedFor: "Multicloud customers without lift-and-shift.",
+  },
+  {
+    id: "on-prem",
+    name: "Oracle on-premises (Exadata, RAC)",
+    description:
+      "Oracle databases in customer data centres — Exadata, RAC, Database Appliances. Heavily-regulated industries.",
+    ingestPattern: "GoldenGate replication · Fabric Data Factory · OneLake hybrid",
+    unlockedFor: "Banks, public sector, sovereign workloads, hybrid estates.",
+  },
+];
+
+export interface FlywheelStep {
+  step: string;
+  workerAction: string;
+  microsoft: string[];
+  oracle: string[];
+}
+
+export const CONSUMPTION_FLYWHEEL: FlywheelStep[] = [
+  {
+    step: "1",
+    workerAction: "Worker asks question in Microsoft Copilot",
+    microsoft: ["Copilot for M365 (per-seat ARR)"],
+    oracle: [],
+  },
+  {
+    step: "2",
+    workerAction: "Foundry agent reasons, retrieves, plans",
+    microsoft: ["Azure AI Foundry (token consumption)", "Agents 365 (control plane)"],
+    oracle: ["Fusion AI Agents (when invoked)"],
+  },
+  {
+    step: "3",
+    workerAction: "Reads from Fabric semantic model",
+    microsoft: ["Microsoft Fabric capacity (CU)", "OneLake storage"],
+    oracle: [],
+  },
+  {
+    step: "4",
+    workerAction: "Source data lives in Oracle (Fusion / DB@Azure / OCI / on-prem)",
+    microsoft: ["Database@Azure passthrough"],
+    oracle: ["Database@Azure consumption", "OCI compute & storage", "Fusion Apps (subscription)"],
+  },
+  {
+    step: "5",
+    workerAction: "Governance, lineage, and audit flow back",
+    microsoft: ["Microsoft Purview"],
+    oracle: ["Oracle Data Safe"],
+  },
+];
+
+export interface MigrationPattern {
+  id: string;
+  from: string;
+  to: string;
+  whatStays: string;
+  whatChanges: string;
+  effort: "low" | "medium" | "high";
+}
+
+export const MIGRATION_PATTERNS: MigrationPattern[] = [
+  {
+    id: "salesforce",
+    from: "Salesforce + Agentforce",
+    to: "Alliance stack with Oracle CX as system of record",
+    whatStays:
+      "Sales-rep UI, CRM record patterns, sales-process; CRM data mirrored into OneLake.",
+    whatChanges:
+      "Agent runtime moves to Foundry; reasoning grounds in Oracle source; agent surface in Copilot.",
+    effort: "medium",
+  },
+  {
+    id: "servicenow",
+    from: "ServiceNow + Now Assist",
+    to: "Coexistence — ServiceNow workflows + Alliance agents via MCP",
+    whatStays:
+      "ITSM workflows, case routing, ServiceNow as workflow engine — kept intact.",
+    whatChanges:
+      "ServiceNow becomes a tool participant via MCP; agentic decisions grounded in Oracle data.",
+    effort: "low",
+  },
+  {
+    id: "sap",
+    from: "SAP + Joule",
+    to: "Coexist with SAP; new agentic workloads on Alliance stack",
+    whatStays:
+      "SAP ERP for existing modules; Joule for SAP-native flows.",
+    whatChanges:
+      "New cross-domain agents on Alliance stack; SAP data via Fabric where licensed; Oracle modules go alliance-first.",
+    effort: "high",
+  },
+];
+
+export interface DevExStep {
+  step: number;
+  label: string;
+  description: string;
+  tooling: string[];
+}
+
+export const DEVEX_JOURNEY: DevExStep[] = [
+  {
+    step: 1,
+    label: "Choose runtime",
+    description:
+      "Pick P1, P2, or P3 — based on whether the agent is read-only, multi-agent, or writes back to Oracle.",
+    tooling: ["Reference architecture", "Decision tree", "Bicep / Terraform templates"],
+  },
+  {
+    step: 2,
+    label: "Build agent in Foundry",
+    description:
+      "Author with Foundry SDK; wire to Fabric semantic model; add MCP tools for Oracle write-backs.",
+    tooling: ["Foundry SDK (Python · TypeScript)", "MCP server templates", "Sample repos"],
+  },
+  {
+    step: 3,
+    label: "Govern & evaluate",
+    description:
+      "Run prompts and golden datasets through Foundry evals; sensitivity labels via Purview; policies via Data Safe.",
+    tooling: ["Foundry evals", "Purview labels", "CI/CD pipelines"],
+  },
+  {
+    step: 4,
+    label: "Publish & monitor",
+    description:
+      "Publish to Agents 365; surface in Copilot; observe via Application Insights + Foundry traces.",
+    tooling: ["Agents 365", "Copilot Studio", "Application Insights"],
+  },
+];
+
+export interface PerformanceTarget {
+  metric: string;
+  target: string;
+  notes: string;
+}
+
+export const PERFORMANCE_TARGETS: PerformanceTarget[] = [
+  {
+    metric: "Question → grounded answer",
+    target: "< 8s p95",
+    notes: "Across Fabric mirror with Foundry retrieval; varies by query complexity.",
+  },
+  {
+    metric: "Mirror replication lag",
+    target: "< 60s p95",
+    notes: "Oracle Fusion → OneLake via Fabric Mirroring (Ignite 2025 GA).",
+  },
+  {
+    metric: "Composite agent uptime",
+    target: "99.9% monthly",
+    notes: "Foundry + Agents 365 + Copilot composite SLA target.",
+  },
+  {
+    metric: "Cross-region failover",
+    target: "< 5min RTO",
+    notes: "Active-active for Database@Azure regions; cold standby for Fusion-mirrored data.",
+  },
+];
+
+export type ComplianceStatus = "covered" | "in-scope" | "roadmap";
+
+export interface ComplianceFramework {
+  id: string;
+  framework: string;
+  scope: string;
+  status: ComplianceStatus;
+}
+
+export const COMPLIANCE_FRAMEWORKS: ComplianceFramework[] = [
+  { id: "soc2", framework: "SOC 2 Type II", scope: "Microsoft + Oracle", status: "covered" },
+  { id: "iso27001", framework: "ISO 27001 / 27017 / 27018", scope: "Both clouds", status: "covered" },
+  { id: "fedramp", framework: "FedRAMP High", scope: "Azure Gov + Oracle Gov Cloud", status: "covered" },
+  { id: "gdpr", framework: "GDPR · EU Data Boundary", scope: "EU regions, sovereign clouds", status: "covered" },
+  { id: "hipaa", framework: "HIPAA / HITRUST", scope: "Healthcare data flows", status: "covered" },
+  { id: "fips", framework: "FIPS 140-3", scope: "Encryption at rest + in transit", status: "covered" },
+  { id: "eu-sov", framework: "EU Sovereign Cloud", scope: "Microsoft Sovereign + Oracle EU Sovereign", status: "in-scope" },
+  { id: "il5", framework: "DoD IL5 / IL6", scope: "Azure Gov + Oracle Gov", status: "in-scope" },
+];
+
 export interface MaturityRow {
   id: string;
   capability: string;
