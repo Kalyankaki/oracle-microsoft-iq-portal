@@ -196,8 +196,8 @@ export default function Sidebar() {
           Reference architecture
         </div>
         <p className="mt-2 text-[11px] leading-relaxed text-muted">
-          Copilot fronts the worker. Oracle Fusion is mirrored into Fabric. The agent runs in
-          Foundry. Purview governs every stage.
+          Copilot fronts the worker. Oracle data — Fusion, Database@Azure, OCI, on-prem — is
+          mirrored into Fabric. The agent runs in Foundry. Purview governs every stage.
         </p>
       </div>
     </aside>

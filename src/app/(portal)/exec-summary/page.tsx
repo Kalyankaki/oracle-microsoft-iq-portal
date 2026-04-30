@@ -56,11 +56,13 @@ export default function ExecSummaryPage() {
               Where the work actually happens
             </div>
             <p className="mt-2 text-[12.5px] leading-relaxed text-white/80">
-              The system of record sits in <span className="text-oracle-red">Oracle Fusion</span>
-              {" "}— SCM, HCM, CX, Finance. The system of work sits in{" "}
-              <span className="text-azure-blue">Microsoft 365</span> — Outlook, Teams, Copilot.
-              Whoever closes the seam between them owns agentic transformation in the
-              enterprise.
+              Across the Fortune 2000, <span className="text-oracle-red">Oracle</span> is one of
+              the deepest stores of record-grade enterprise data — Fusion SaaS, Database@Azure,
+              Oracle Cloud Infrastructure, and on-prem databases.{" "}
+              <span className="text-azure-blue">Microsoft 365</span> is where most information
+              workers spend their day — Outlook, Teams, Copilot. Closing the seam between Oracle
+              data wherever it lives and the Microsoft worker surface is where agentic
+              transformation actually happens for these enterprises.
             </p>
           </div>
 
@@ -181,10 +183,11 @@ export default function ExecSummaryPage() {
           </div>
           <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
             Adoption is mass-market, but value capture is rare. The pattern is clear: orgs
-            that bolt agents onto disconnected data stacks stall; orgs that pair the system of
-            record with the system of work compound results. That seam — Oracle Fusion to
-            Microsoft 365 — is the largest unaddressed opportunity in enterprise software, and
-            first-mover lead time compounds every quarter the alliance is shipping.
+            that bolt agents onto disconnected data stacks stall; orgs that pair their data of
+            record with the system of work compound results. For enterprises running Oracle,
+            that seam — Oracle data anywhere to Microsoft 365 — is among the largest
+            unaddressed opportunities in enterprise software, and first-mover lead time
+            compounds every quarter the alliance is shipping.
           </p>
         </div>
       </section>

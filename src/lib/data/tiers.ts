@@ -28,7 +28,7 @@ export const TIERS: Tier[] = [
     added: {
       title: "Foundation in place",
       bullets: [
-        "Oracle Fusion data mirrored into Microsoft Fabric / OneLake.",
+        "Oracle data — Fusion SaaS, Database@Azure, OCI, on-prem — mirrored into Microsoft Fabric / OneLake.",
         "Microsoft Copilot is the front door, but has no semantic model or agent reasoning.",
         "Answers stay generic — the agent can describe the data, not interpret it.",
       ],
