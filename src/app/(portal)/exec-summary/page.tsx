@@ -1,40 +1,13 @@
 import {
   AlertTriangle,
-  Boxes,
   Briefcase,
   ClipboardList,
-  HeartPulse,
   LineChart,
   Repeat,
   Sparkles,
   Target,
-  UsersRound,
 } from "lucide-react";
-import { SCENARIO_PROGRESSIONS } from "@/lib/data/exec-summary";
 import { CONSUMPTION_FLYWHEEL } from "@/lib/data/how-we-enable";
-import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
-import { TIERS, type TierId } from "@/lib/data/tiers";
-import { cn } from "@/lib/utils";
-
-const ICONS: Record<ScenarioId, typeof Boxes> = {
-  "supply-chain": Boxes,
-  workforce: UsersRound,
-  "customer-health": HeartPulse,
-};
-
-const TIER_BORDER: Record<TierId, string> = {
-  baseline: "border-white/10",
-  fabric: "border-azure-blue/30",
-  foundry: "border-iq-yellow/30",
-  work: "border-iq-teal/30",
-};
-
-const TIER_BENEFIT_TEXT: Record<TierId, string> = {
-  baseline: "text-white/70",
-  fabric: "text-azure-blue",
-  foundry: "text-iq-yellow",
-  work: "text-iq-teal",
-};
 
 export default function ExecSummaryPage() {
   return (
@@ -100,9 +73,9 @@ export default function ExecSummaryPage() {
             </div>
             <p className="mt-2 text-[12.5px] leading-relaxed text-white/85">
               Oracle&rsquo;s depth of business data plus Microsoft&rsquo;s agent runtime (Foundry),
-              governance (Purview), and worker surface (Copilot, Teams) is the only complete
-              agentic stack in the enterprise. No other partnership covers data, reasoning, and
-              the worker end-to-end.
+              governance (Purview), and worker surface (Copilot, Teams) form the deepest
+              enterprise agentic stack on offer. No other partnership covers data, reasoning,
+              and the worker end-to-end at this scope.
             </p>
           </div>
         </div>
@@ -207,12 +180,11 @@ export default function ExecSummaryPage() {
             Why now
           </div>
           <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
-            Adoption is mass-market — but value capture is rare and 40%+ of agentic projects
-            will be cancelled by 2027. The pattern is clear: orgs that bolt agents onto
-            disconnected data stacks fail; orgs that pair the system of record with the system
-            of work win. That seam — Oracle Fusion to Microsoft 365 — is the largest unaddressed
-            opportunity in enterprise software, and the window to coordinate a stack closes the
-            moment a competitor announces theirs.
+            Adoption is mass-market, but value capture is rare. The pattern is clear: orgs
+            that bolt agents onto disconnected data stacks stall; orgs that pair the system of
+            record with the system of work compound results. That seam — Oracle Fusion to
+            Microsoft 365 — is the largest unaddressed opportunity in enterprise software, and
+            first-mover lead time compounds every quarter the alliance is shipping.
           </p>
         </div>
       </section>
@@ -403,17 +375,17 @@ export default function ExecSummaryPage() {
         <div className="mt-4 grid gap-2 md:grid-cols-4">
           <div className="rounded-lg border border-iq-yellow/30 bg-iq-yellow/[0.06] p-3">
             <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
-              Joint TAM by 2035
+              Total agentic TAM by 2035
             </div>
             <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">$450B+</div>
-            <div className="mt-1 text-[11px] text-muted">Agentic enterprise software · Gartner</div>
+            <div className="mt-1 text-[11px] text-muted">Alliance plays for outsized share · Gartner</div>
           </div>
           <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
             <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
               Customers in scope
             </div>
             <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">~6,000</div>
-            <div className="mt-1 text-[11px] text-muted">Oracle Fusion + M365 enterprise overlap</div>
+            <div className="mt-1 text-[11px] text-muted">Estimated Fusion + M365 overlap; under joint validation</div>
           </div>
           <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
             <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
@@ -424,10 +396,10 @@ export default function ExecSummaryPage() {
           </div>
           <div className="rounded-lg border border-iq-teal/30 bg-iq-teal/[0.06] p-3">
             <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
-              Time to first T2 agent
+              Target time to first T2 agent
             </div>
             <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">~12 wks</div>
-            <div className="mt-1 text-[11px] text-muted">With accelerators; vs. 9–12 months bespoke</div>
+            <div className="mt-1 text-[11px] text-muted">With accelerators GA; bespoke today: 9–12 months</div>
           </div>
         </div>
         <p className="mt-4 max-w-3xl text-[12.5px] leading-relaxed text-white/80">
@@ -637,141 +609,17 @@ export default function ExecSummaryPage() {
           </li>
           <li className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
             <div className="font-mono text-[10px] uppercase tracking-widest text-iq-teal">
-              Commit 4 · Industry templates
+              Commit 4 · Joint customer advisory board
             </div>
             <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
-              Banking and Manufacturing blueprints co-developed in Phase 3, with named SI
-              partners (Accenture, Deloitte, EY, Capgemini) brought into the alliance.
+              Standing CAB with quarterly cadence and 10+ named participants by end of Year 1.
+              All four industry blueprints co-developed by end of Phase 3, with global SI
+              partners brought into the alliance under a co-funded enablement programme.
             </p>
           </li>
         </ul>
       </section>
 
-      <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-          The narrative
-        </div>
-        <div className="mt-1 text-base font-semibold tracking-tight">
-          Each IQ layer changes what Copilot can do
-        </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-4">
-          {TIERS.map((tier) => (
-            <div
-              key={tier.id}
-              className={cn(
-                "rounded-xl border bg-white/[0.02] p-3",
-                TIER_BORDER[tier.id],
-              )}
-            >
-              <div className="flex items-center justify-between">
-                <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
-                  T{tier.index} · {tier.shortLabel}
-                </div>
-              </div>
-              <div className="mt-1 text-[13px] font-semibold tracking-tight">{tier.label}</div>
-              <div className="mt-1 text-[11.5px] leading-snug text-white/75">{tier.tagline}</div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-4 max-w-3xl text-[12.5px] leading-relaxed text-white/75">
-          <span className="text-white/90">Baseline</span> describes the tables.
-          <span className="text-azure-blue"> Fabric IQ</span> turns them into real numbers.
-          <span className="text-iq-yellow"> Foundry IQ</span> reasons over those numbers and
-          ranks the moves. <span className="text-iq-teal">Work IQ</span> personalizes everything
-          to your calendar, your team, and your week — and drafts the follow-ups for you.
-        </p>
-      </section>
-
-      <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-          Across all three scenarios
-        </div>
-        <div className="mt-1 text-base font-semibold tracking-tight">
-          The Copilot experience improves the same way every time
-        </div>
-        <p className="mt-2 max-w-3xl text-[12.5px] leading-relaxed text-white/75">
-          One row per scenario, one card per IQ layer. Each card shows what Copilot delivers at
-          that tier — and the business benefit it unlocks.
-        </p>
-      </section>
-
-      <div className="space-y-4">
-        {SCENARIOS.map((s) => {
-          const progression = SCENARIO_PROGRESSIONS[s.id];
-          const Icon = ICONS[s.id];
-          return (
-            <section
-              key={s.id}
-              className={cn(
-                "rounded-2xl border bg-navy-900/70 p-5",
-                s.id === "supply-chain" && "border-azure-blue/30",
-                s.id === "workforce" && "border-iq-yellow/30",
-                s.id === "customer-health" && "border-iq-teal/30",
-              )}
-            >
-              <div className="flex flex-wrap items-start gap-3">
-                <div
-                  className={cn(
-                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-white/5",
-                    s.id === "supply-chain" && "border-azure-blue/30 text-azure-blue",
-                    s.id === "workforce" && "border-iq-yellow/30 text-iq-yellow",
-                    s.id === "customer-health" && "border-iq-teal/30 text-iq-teal",
-                  )}
-                >
-                  <Icon className="h-5 w-5" strokeWidth={2} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-                    {s.domain}
-                  </div>
-                  <div className="text-base font-semibold tracking-tight">{s.label}</div>
-                  <p className="mt-1.5 text-[12.5px] italic leading-relaxed text-white/75">
-                    “{progression.question}”
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 grid gap-3 md:grid-cols-4">
-                {TIERS.map((tier) => {
-                  const step = progression.steps[tier.id];
-                  return (
-                    <div
-                      key={tier.id}
-                      className={cn(
-                        "flex flex-col rounded-xl border bg-white/[0.02] p-3",
-                        TIER_BORDER[tier.id],
-                      )}
-                    >
-                      <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
-                        T{tier.index} · {tier.shortLabel}
-                      </div>
-                      <div className="mt-1 text-[13px] font-semibold tracking-tight">
-                        {tier.label}
-                      </div>
-                      <p className="mt-2 text-[12px] leading-relaxed text-white/85">
-                        {step.delivers}
-                      </p>
-                      <div className="mt-3 border-t border-white/10 pt-2">
-                        <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
-                          Business benefit
-                        </div>
-                        <p
-                          className={cn(
-                            "mt-1 text-[11.5px] leading-snug",
-                            TIER_BENEFIT_TEXT[tier.id],
-                          )}
-                        >
-                          {step.benefit}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          );
-        })}
-      </div>
     </div>
   );
 }

@@ -38,7 +38,7 @@ const COMPETITORS: Competitor[] = [
   },
   {
     name: "SAP Joule",
-    positioning: "ERP-led agents inside SAP, partnership with Microsoft on Copilot.",
+    positioning: "ERP-led agents inside SAP, with the existing SAP × Microsoft Copilot partnership.",
     coverage: {
       erp: "yes",
       hcm: "yes",
@@ -50,7 +50,7 @@ const COMPETITORS: Competitor[] = [
       multiCloud: "partial",
     },
     whyShort:
-      "Microsoft is a partner, not a co-architect — the agent runtime is SAP&apos;s, the governance bridge is missing, and Oracle data is untouched. A real but incomplete coalition.",
+      "SAP and Microsoft already partner on Joule + Copilot. The Enterprise Agent Alliance is complementary — it adds Oracle's data depth where SAP doesn't reach, and gives Microsoft a second strategic system-of-record relationship.",
   },
   {
     name: "ServiceNow Now Assist",
@@ -66,7 +66,7 @@ const COMPETITORS: Competitor[] = [
       multiCloud: "partial",
     },
     whyShort:
-      "Excellent for IT, HR ops, and workflows — but it sits above the system of record, not inside it. No data-of-the-business depth and no first-class Office surface.",
+      "Strong for IT, HR ops, and workflows. Complementary, not competitive — alliance agents call ServiceNow workflows via MCP, ServiceNow stays the workflow engine, the alliance grounds reasoning in Oracle's data of record.",
   },
   {
     name: "Oracle × Microsoft (this alliance)",
@@ -83,7 +83,7 @@ const COMPETITORS: Competitor[] = [
       multiCloud: "yes",
     },
     whyShort:
-      "The only combination that pairs Oracle's data depth (ERP/HCM/CX/Finance) with Microsoft's worker ubiquity (Copilot, Teams, Outlook) and a full agent runtime (Foundry + A365 + Purview) — across both clouds.",
+      "The deepest combination of Oracle's data breadth (ERP/HCM/CX/Finance) with Microsoft's worker ubiquity (Copilot, Teams, Outlook) and a full agent runtime (Foundry + Microsoft Agent 365 + Purview) — across both clouds.",
   },
 ];
 
@@ -134,13 +134,15 @@ export default function CompetitivePage() {
           </div>
         </div>
         <h1 className="mt-3 text-xl font-semibold tracking-tight md:text-2xl">
-          Three credible competitors. None of them have what this alliance has.
+          Three credible adjacents. The Enterprise Agent Alliance pairs the deepest combination
+          of system of record + system of work + agent runtime.
         </h1>
         <p className="mt-3 max-w-3xl text-[13.5px] leading-relaxed text-white/85">
-          Every other agentic-enterprise story today is single-ecosystem (Salesforce,
-          ServiceNow) or partial-stack (SAP + Microsoft). Only Oracle × Microsoft pairs the
-          system of record with the system of work and the agent runtime — and the window to
-          announce closes the moment a competitor announces theirs.
+          Most agentic-enterprise stories today are single-ecosystem (Salesforce, ServiceNow)
+          or built around one system of record (SAP + Microsoft). The Enterprise Agent Alliance
+          is the only one that pairs Oracle&apos;s data breadth with Microsoft&apos;s worker
+          ubiquity and a full agent runtime — first-mover lead time compounds every quarter
+          the alliance is shipping.
         </p>
       </section>
 
@@ -236,13 +238,14 @@ export default function CompetitivePage() {
               The differentiator
             </div>
             <div className="mt-1 text-base font-semibold tracking-tight">
-              Oracle × Microsoft is the only complete stack
+              The deepest combination of record, work, and reasoning
             </div>
             <p className="mt-3 text-[12.5px] leading-relaxed text-white/85">
-              No competitor pairs a full enterprise system of record with the worker surface
-              4 in 5 enterprises already use. That asymmetry is permanent — Salesforce can&apos;t
-              ship Office, SAP can&apos;t ship CRM at scale, ServiceNow can&apos;t ship ERP. Only this
-              alliance covers all four quadrants.
+              No other coalition pairs a full enterprise system of record with the worker
+              surface 4 in 5 enterprises already use. The asymmetry holds — Salesforce
+              doesn&apos;t ship Office, SAP and Microsoft already partner but on a narrower
+              scope, ServiceNow doesn&apos;t ship ERP. The alliance is the most complete play
+              for all four quadrants.
             </p>
           </article>
         </div>
