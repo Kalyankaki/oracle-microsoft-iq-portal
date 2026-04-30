@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Boxes, ClipboardList, HeartPulse, Sparkles, UsersRound } from "lucide-react";
+import { Boxes, ClipboardList, HeartPulse, Rocket, Sparkles, UsersRound } from "lucide-react";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +28,7 @@ export default function Sidebar() {
   const pathname = usePathname() ?? "";
   const activeScenario = pathname.startsWith("/scenario/") ? pathname.split("/")[2] : null;
   const isExecSummary = pathname.startsWith("/exec-summary");
+  const isHowWeEnable = pathname.startsWith("/how-we-enable");
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r border-white/10 bg-navy-900/60">
@@ -54,7 +55,28 @@ export default function Sidebar() {
           </span>
         </Link>
         <div className="mt-1 px-3 text-[11px] text-muted">
-          The narrative across all three scenarios.
+          Market context and the narrative across all three scenarios.
+        </div>
+      </div>
+
+      <div className="mt-3 px-3">
+        <Link
+          href="/how-we-enable"
+          className={cn(
+            "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
+            isHowWeEnable
+              ? "border-iq-yellow/40 bg-iq-yellow/[0.08]"
+              : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]",
+          )}
+        >
+          <Rocket className="h-4 w-4 text-iq-yellow" />
+          How We Enable This
+          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
+            Tech
+          </span>
+        </Link>
+        <div className="mt-1 px-3 text-[11px] text-muted">
+          Three integration patterns and the accelerators behind them.
         </div>
       </div>
 
