@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Boxes, HeartPulse, UsersRound } from "lucide-react";
+import EnablementStack from "@/components/EnablementStack";
 import IQBadge from "@/components/IQBadge";
 import ResponseBlocks from "@/components/ResponseBlocks";
 import { RESPONSES } from "@/lib/data/responses";
@@ -112,6 +113,9 @@ export default function ScenarioPage({
               <p className="mb-4 text-[14px] font-medium leading-relaxed text-white">
                 {r.summary}
               </p>
+              <div className="mb-4">
+                <EnablementStack tier={tier} />
+              </div>
               <ResponseBlocks blocks={r.blocks} />
             </section>
           );
