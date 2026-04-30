@@ -3,12 +3,19 @@ import {
   CheckCircle2,
   CircleDashed,
   Clock,
+  Code2,
   Database,
   Factory,
+  Gauge,
+  Globe,
   Landmark,
+  Layers,
+  Lock,
   Network,
   Plug,
+  Repeat,
   Rocket,
+  Server,
   Shield,
   ShoppingBag,
   ShieldCheck,
@@ -17,10 +24,17 @@ import {
 import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import {
   ACCELERATORS,
+  COMPLIANCE_FRAMEWORKS,
+  CONSUMPTION_FLYWHEEL,
   CROSS_CUTTING,
+  DEVEX_JOURNEY,
   INDUSTRY_BLUEPRINTS,
   INTEGRATION_PATTERNS,
   MATURITY_ROWS,
+  MIGRATION_PATTERNS,
+  ORACLE_DATA_LOCATIONS,
+  PERFORMANCE_TARGETS,
+  type ComplianceStatus,
   type MaturityStatus,
 } from "@/lib/data/how-we-enable";
 
@@ -46,6 +60,26 @@ const STATUS_ICON: Record<MaturityStatus, typeof CheckCircle2> = {
 };
 
 const INDUSTRY_ICONS = [Landmark, Factory, ShoppingBag, ShieldCheck];
+
+const DATA_LOCATION_ICONS = [Layers, Globe, Network, Server];
+
+const COMPLIANCE_PILL: Record<ComplianceStatus, string> = {
+  covered: "border-iq-teal/40 bg-iq-teal/15 text-iq-teal",
+  "in-scope": "border-iq-yellow/40 bg-iq-yellow/15 text-iq-yellow",
+  roadmap: "border-white/15 bg-white/[0.04] text-white/70",
+};
+
+const COMPLIANCE_LABEL: Record<ComplianceStatus, string> = {
+  covered: "Covered",
+  "in-scope": "In scope",
+  roadmap: "Roadmap",
+};
+
+const MIGRATION_EFFORT_PILL: Record<"low" | "medium" | "high", string> = {
+  low: "border-iq-teal/40 bg-iq-teal/15 text-iq-teal",
+  medium: "border-iq-yellow/40 bg-iq-yellow/15 text-iq-yellow",
+  high: "border-oracle-red/40 bg-oracle-red/15 text-oracle-red",
+};
 
 export default function HowWeEnablePage() {
   return (
@@ -73,6 +107,74 @@ export default function HowWeEnablePage() {
       </section>
 
       <ArchitectureDiagram />
+
+      <section>
+        <div className="mb-3 flex items-end justify-between">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Oracle data anywhere
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              The alliance reaches Oracle data wherever it lives — not just Fusion SaaS
+            </div>
+          </div>
+          <div className="hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            SaaS · Database@Azure · OCI · on-prem
+          </div>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+          {ORACLE_DATA_LOCATIONS.map((loc, idx) => {
+            const Icon = DATA_LOCATION_ICONS[idx] ?? Layers;
+            return (
+              <article
+                key={loc.id}
+                className={`flex flex-col rounded-xl border bg-navy-900/70 p-4 ${
+                  loc.isFlagship
+                    ? "border-iq-teal/40 bg-iq-teal/[0.04]"
+                    : "border-white/10"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <div
+                    className={`flex h-8 w-8 items-center justify-center rounded-md border ${
+                      loc.isFlagship
+                        ? "border-iq-teal/40 bg-iq-teal/10 text-iq-teal"
+                        : "border-oracle-red/30 bg-oracle-red/10 text-oracle-red"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" strokeWidth={2} />
+                  </div>
+                  <div className="text-[13px] font-semibold tracking-tight">{loc.name}</div>
+                  {loc.isFlagship && (
+                    <span className="ml-auto rounded-full border border-iq-teal/40 bg-iq-teal/10 px-1.5 py-0.5 font-mono text-[8.5px] uppercase tracking-widest text-iq-teal">
+                      Demo
+                    </span>
+                  )}
+                </div>
+                <p className="mt-2 text-[11.5px] leading-relaxed text-white/80">
+                  {loc.description}
+                </p>
+                <div className="mt-3 rounded-md border border-white/10 bg-white/[0.02] px-2.5 py-1.5">
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                    Ingest pattern
+                  </div>
+                  <div className="mt-0.5 font-mono text-[10.5px] text-azure-blue">
+                    {loc.ingestPattern}
+                  </div>
+                </div>
+                <div className="mt-2 text-[11px] leading-snug text-white/70">{loc.unlockedFor}</div>
+              </article>
+            );
+          })}
+        </div>
+        <p className="mt-4 max-w-3xl text-[12.5px] leading-relaxed text-white/75">
+          The Fusion-first demo is the front door, not the ceiling. Every Oracle workload —
+          from Exadata in a banking data centre to Database@Azure in a regulated EU region —
+          becomes addressable to Foundry agents and Copilot through the same Fabric pipeline.
+          That&apos;s how the alliance unlocks <span className="text-iq-teal">Fabric capacity
+          consumption</span>, not just Copilot seats.
+        </p>
+      </section>
 
       <section>
         <div className="mb-3 flex items-end justify-between">
@@ -145,6 +247,101 @@ export default function HowWeEnablePage() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section className="overflow-hidden rounded-2xl border border-iq-yellow/30 bg-navy-900/70">
+        <div className="flex flex-wrap items-center gap-3 border-b border-iq-yellow/20 bg-iq-yellow/[0.04] px-5 py-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-iq-yellow/30 bg-iq-yellow/10 text-iq-yellow">
+            <Repeat className="h-4 w-4" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Joint consumption flywheel
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              Every agent invocation drives revenue across both clouds
+            </div>
+          </div>
+          <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            One workflow · two stacks · five revenue lines
+          </div>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="bg-white/[0.02]">
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Step
+                </th>
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Worker action
+                </th>
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-azure-blue">
+                  Microsoft consumption
+                </th>
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-oracle-red">
+                  Oracle consumption
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {CONSUMPTION_FLYWHEEL.map((s) => (
+                <tr key={s.step} className="border-t border-white/5 odd:bg-white/[0.015]">
+                  <td className="px-3 py-3 align-top">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-iq-yellow/40 bg-iq-yellow/10 font-mono text-[10px] font-semibold text-iq-yellow">
+                      {s.step}
+                    </span>
+                  </td>
+                  <td className="px-3 py-3 align-top text-[12.5px] font-medium text-white/90">
+                    {s.workerAction}
+                  </td>
+                  <td className="px-3 py-3 align-top">
+                    {s.microsoft.length === 0 ? (
+                      <span className="text-[11px] text-muted">—</span>
+                    ) : (
+                      <div className="flex flex-wrap gap-1">
+                        {s.microsoft.map((m) => (
+                          <span
+                            key={m}
+                            className="rounded-full border border-azure-blue/30 bg-azure-blue/10 px-2 py-0.5 font-mono text-[10px] text-azure-blue"
+                          >
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-3 py-3 align-top">
+                    {s.oracle.length === 0 ? (
+                      <span className="text-[11px] text-muted">—</span>
+                    ) : (
+                      <div className="flex flex-wrap gap-1">
+                        {s.oracle.map((m) => (
+                          <span
+                            key={m}
+                            className="rounded-full border border-oracle-red/30 bg-oracle-red/10 px-2 py-0.5 font-mono text-[10px] text-oracle-red"
+                          >
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="border-t border-white/10 bg-white/[0.02] px-5 py-3">
+          <p className="max-w-3xl text-[12.5px] leading-relaxed text-white/85">
+            <span className="text-iq-yellow">The flywheel:</span> the more Oracle data lands in
+            OneLake, the more Fabric capacity gets consumed; the more agents run in Foundry,
+            the more tokens flow; the more Copilot drives invocations, the more it pulls on
+            both. Microsoft monetizes <span className="text-azure-blue">Fabric + Foundry +
+            Copilot</span> simultaneously; Oracle monetizes{" "}
+            <span className="text-oracle-red">Database@Azure + OCI + Fusion</span> in lockstep.
+          </p>
         </div>
       </section>
 
@@ -302,6 +499,177 @@ export default function HowWeEnablePage() {
                 <span className="font-mono text-[10px] tracking-wide text-azure-blue">
                   {c.microsoft}
                 </span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-white/10 bg-navy-900/70 p-5">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-iq-teal/30 bg-iq-teal/10 text-iq-teal">
+            <Gauge className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Performance &amp; SLA targets
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              Latency, replication lag, and uptime budgets the alliance commits to
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+          {PERFORMANCE_TARGETS.map((p) => (
+            <div
+              key={p.metric}
+              className="rounded-lg border border-white/10 bg-white/[0.03] p-3"
+            >
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                {p.metric}
+              </div>
+              <div className="mt-1 text-xl font-semibold tracking-tight text-iq-teal">
+                {p.target}
+              </div>
+              <div className="mt-1 text-[11px] leading-snug text-white/70">{p.notes}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-3 flex items-end justify-between">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Developer experience
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              The path from idea to a production agent — four steps, one toolchain
+            </div>
+          </div>
+          <div className="hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            Built for SIs and ISVs
+          </div>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+          {DEVEX_JOURNEY.map((s) => (
+            <article
+              key={s.step}
+              className="flex flex-col rounded-xl border border-white/10 bg-navy-900/70 p-4"
+            >
+              <div className="flex items-center gap-2">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-iq-yellow/40 bg-iq-yellow/10 font-mono text-[11px] font-semibold text-iq-yellow">
+                  {s.step}
+                </span>
+                <Code2 className="h-4 w-4 text-iq-yellow" />
+                <div className="text-[13px] font-semibold tracking-tight">{s.label}</div>
+              </div>
+              <p className="mt-2 text-[12px] leading-relaxed text-white/80">{s.description}</p>
+              <div className="mt-3 flex flex-wrap gap-1">
+                {s.tooling.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-white/85"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-white/10 bg-navy-900/70 p-5">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-azure-blue/30 bg-azure-blue/10 text-azure-blue">
+            <Lock className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Security &amp; compliance
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              Both clouds carry the certifications regulated customers actually require
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+          {COMPLIANCE_FRAMEWORKS.map((f) => (
+            <div
+              key={f.id}
+              className="rounded-lg border border-white/10 bg-white/[0.03] p-3"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-[12.5px] font-semibold tracking-tight">{f.framework}</div>
+                <span
+                  className={`rounded-full border px-1.5 py-0.5 font-mono text-[8.5px] uppercase tracking-widest ${COMPLIANCE_PILL[f.status]}`}
+                >
+                  {COMPLIANCE_LABEL[f.status]}
+                </span>
+              </div>
+              <div className="mt-1.5 text-[11px] leading-snug text-white/70">{f.scope}</div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 max-w-3xl text-[12.5px] leading-relaxed text-white/75">
+          Sensitivity labels classified in Oracle Data Safe flow to Microsoft Purview through
+          the Governance Bridge — the same policy travels with the data through OneLake,
+          Foundry, and Copilot. Auditors get a single lineage view from Oracle source to
+          Copilot answer.
+        </p>
+      </section>
+
+      <section>
+        <div className="mb-3 flex items-end justify-between">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Migration &amp; co-existence
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              Customers don&rsquo;t start from zero — they start from somewhere
+            </div>
+          </div>
+          <div className="hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            Salesforce · ServiceNow · SAP
+          </div>
+        </div>
+        <div className="grid gap-3 md:grid-cols-3">
+          {MIGRATION_PATTERNS.map((m) => (
+            <article
+              key={m.id}
+              className="flex flex-col rounded-xl border border-white/10 bg-navy-900/70 p-4"
+            >
+              <div className="flex items-center justify-between">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Pattern · {m.id}
+                </div>
+                <span
+                  className={`rounded-full border px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-widest ${MIGRATION_EFFORT_PILL[m.effort]}`}
+                >
+                  {m.effort} effort
+                </span>
+              </div>
+              <div className="mt-2 flex items-center gap-2 text-[11.5px] text-white/85">
+                <span className="font-mono text-oracle-red">{m.from}</span>
+                <ArrowRight className="h-3 w-3 text-muted" />
+              </div>
+              <div className="mt-1 text-[12.5px] font-semibold tracking-tight text-azure-blue">
+                {m.to}
+              </div>
+              <div className="mt-3 border-t border-white/10 pt-2">
+                <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                  What stays
+                </div>
+                <p className="mt-0.5 text-[11.5px] leading-snug text-white/85">{m.whatStays}</p>
+              </div>
+              <div className="mt-2">
+                <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                  What changes
+                </div>
+                <p className="mt-0.5 text-[11.5px] leading-snug text-iq-yellow">
+                  {m.whatChanges}
+                </p>
               </div>
             </article>
           ))}

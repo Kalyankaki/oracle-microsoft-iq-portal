@@ -1,4 +1,14 @@
-import { AlertTriangle, Boxes, ClipboardList, HeartPulse, LineChart, Sparkles, UsersRound } from "lucide-react";
+import {
+  AlertTriangle,
+  Boxes,
+  Briefcase,
+  ClipboardList,
+  HeartPulse,
+  LineChart,
+  Sparkles,
+  Target,
+  UsersRound,
+} from "lucide-react";
 import { SCENARIO_PROGRESSIONS } from "@/lib/data/exec-summary";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
 import { TIERS, type TierId } from "@/lib/data/tiers";
@@ -372,6 +382,173 @@ export default function ExecSummaryPage() {
             close them. That is the joint business case in one sentence.
           </p>
         </div>
+      </section>
+
+      <section className="rounded-2xl border border-iq-yellow/30 bg-navy-900/70 p-5">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-iq-yellow/30 bg-iq-yellow/10 text-iq-yellow">
+            <LineChart className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Size of the prize
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              The opportunity sized for the alliance
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-2 md:grid-cols-4">
+          <div className="rounded-lg border border-iq-yellow/30 bg-iq-yellow/[0.06] p-3">
+            <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+              Joint TAM by 2035
+            </div>
+            <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">$450B+</div>
+            <div className="mt-1 text-[11px] text-muted">Agentic enterprise software · Gartner</div>
+          </div>
+          <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+            <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+              Customers in scope
+            </div>
+            <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">~6,000</div>
+            <div className="mt-1 text-[11px] text-muted">Oracle Fusion + M365 enterprise overlap</div>
+          </div>
+          <div className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
+            <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+              Reusable building blocks
+            </div>
+            <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">9</div>
+            <div className="mt-1 text-[11px] text-muted">3 patterns + 2 accelerators + 4 industry blueprints</div>
+          </div>
+          <div className="rounded-lg border border-iq-teal/30 bg-iq-teal/[0.06] p-3">
+            <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+              Time to first T2 agent
+            </div>
+            <div className="mt-1 text-xl font-semibold tracking-tight md:text-2xl">~12 wks</div>
+            <div className="mt-1 text-[11px] text-muted">With accelerators; vs. 9–12 months bespoke</div>
+          </div>
+        </div>
+        <p className="mt-4 max-w-3xl text-[12.5px] leading-relaxed text-white/80">
+          The prize isn&apos;t just license revenue — it&apos;s consumption across both stacks.
+          Every agent invocation drives Microsoft Fabric capacity, Foundry tokens, and Copilot
+          seats <span className="text-muted">·</span> while compounding Oracle Database@Azure,
+          OCI, and Fusion subscription consumption. See <span className="text-iq-yellow">Joint
+          consumption flywheel</span> on the How We Enable This page.
+        </p>
+      </section>
+
+      <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-azure-blue/30 bg-azure-blue/10 text-azure-blue">
+            <Briefcase className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Investment &amp; commercial frame
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              How the alliance gets paid for
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Year 1
+            </div>
+            <div className="mt-1 text-[13.5px] font-semibold tracking-tight">
+              Co-sell, separate billing
+            </div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/80">
+              Lowest-friction path. Both sales orgs co-sell with shared pipeline credit; each
+              vendor bills for its own consumption. Joint reference architecture and shared
+              accelerators in market.
+            </p>
+          </div>
+          <div className="rounded-xl border border-azure-blue/30 bg-azure-blue/[0.05] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-azure-blue">
+              Year 2
+            </div>
+            <div className="mt-1 text-[13.5px] font-semibold tracking-tight">
+              Joint SKU + marketplace
+            </div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/85">
+              Single alliance SKU on Azure Marketplace and Oracle Cloud Marketplace; unified
+              GTM with named field motion; co-marketed in industry events; ISV/SI program
+              announced jointly.
+            </p>
+          </div>
+          <div className="rounded-xl border border-iq-yellow/30 bg-iq-yellow/[0.05] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-iq-yellow">
+              Co-funded build
+            </div>
+            <div className="mt-1 text-[13.5px] font-semibold tracking-tight">
+              Accelerators &amp; blueprints
+            </div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/85">
+              Ontology Bridge, Governance Bridge, and the four industry blueprints co-developed
+              and co-owned. Shared engineering investment; shared roadmap; shared customer
+              advisory board.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-iq-teal/40 bg-gradient-to-br from-navy-900/80 via-navy-900/60 to-iq-teal/[0.08] p-6">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-iq-teal/40 bg-iq-teal/10 text-iq-teal">
+            <Target className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              The ask
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              What we&apos;re asking the SLT to commit to
+            </div>
+          </div>
+          <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            Decision-grade
+          </div>
+        </div>
+        <ul className="mt-4 grid gap-3 md:grid-cols-2">
+          <li className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-iq-teal">
+              Commit 1 · Joint sponsorship
+            </div>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
+              Both leadership teams publicly endorse the Enterprise Agent Alliance. Joint
+              announcement at the next major event from each side.
+            </p>
+          </li>
+          <li className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-iq-teal">
+              Commit 2 · Co-funded GTM
+            </div>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
+              Named field organization with shared targets and pipeline credit. Co-marketing
+              budget agreed for Year 1 with quarterly review cadence.
+            </p>
+          </li>
+          <li className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-iq-teal">
+              Commit 3 · Accelerators GA
+            </div>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
+              Ontology Bridge and Governance Bridge accelerators committed to GA by end of
+              Phase 2. Co-owned engineering, co-owned roadmap.
+            </p>
+          </li>
+          <li className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-iq-teal">
+              Commit 4 · Industry templates
+            </div>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
+              Banking and Manufacturing blueprints co-developed in Phase 3, with named SI
+              partners (Accenture, Deloitte, EY, Capgemini) brought into the alliance.
+            </p>
+          </li>
+        </ul>
       </section>
 
       <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
