@@ -42,10 +42,10 @@ export const INTEGRATION_PATTERNS: IntegrationPattern[] = [
     title: "Agents in Foundry, A2A through Microsoft 365",
     oneLiner: "Build the agent in Foundry, manage it in Agents 365, present it in Copilot.",
     description:
-      "Custom agents built in Azure AI Foundry are managed and governed through Microsoft 365 Agents (A365), then presented inside Microsoft Copilot. Multiple agents collaborate via Agent-to-Agent (A2A) protocols and are powered by Fabric IQ for data, Foundry IQ for reasoning and retrieval, and Work IQ for personalization through Microsoft Graph.",
+      "Custom agents built in Azure AI Foundry are managed and governed through Microsoft Agent 365, then presented inside Microsoft Copilot. Multiple agents collaborate via Agent-to-Agent (A2A) protocols and are powered by Fabric IQ for data, Foundry IQ for reasoning and retrieval, and Work IQ for personalization through Microsoft Graph.",
     components: [
       "Azure AI Foundry",
-      "Microsoft 365 Agents (A365)",
+      "Microsoft Agent 365",
       "Microsoft Copilot",
       "A2A protocol",
       "Fabric IQ",
@@ -130,21 +130,21 @@ export interface FlywheelStep {
 export const CONSUMPTION_FLYWHEEL: FlywheelStep[] = [
   {
     step: "1",
-    workerAction: "Worker asks question in Microsoft Copilot",
+    workerAction: "Worker asks question in Copilot or Fusion",
     microsoft: ["Copilot for M365 (per-seat ARR)"],
-    oracle: [],
+    oracle: ["Oracle Fusion (per-user subscription)"],
   },
   {
     step: "2",
     workerAction: "Foundry agent reasons, retrieves, plans",
-    microsoft: ["Azure AI Foundry (token consumption)", "Agents 365 (control plane)"],
+    microsoft: ["Azure AI Foundry (token consumption)", "Microsoft Agent 365 (control plane)"],
     oracle: ["Fusion AI Agents (when invoked)"],
   },
   {
     step: "3",
     workerAction: "Reads from Fabric semantic model",
     microsoft: ["Microsoft Fabric capacity (CU)", "OneLake storage"],
-    oracle: [],
+    oracle: ["Oracle GoldenGate (replication metering)"],
   },
   {
     step: "4",
@@ -156,7 +156,7 @@ export const CONSUMPTION_FLYWHEEL: FlywheelStep[] = [
     step: "5",
     workerAction: "Governance, lineage, and audit flow back",
     microsoft: ["Microsoft Purview"],
-    oracle: ["Oracle Data Safe"],
+    oracle: ["Oracle Data Safe", "Oracle Audit Vault"],
   },
 ];
 
@@ -235,8 +235,8 @@ export const DEVEX_JOURNEY: DevExStep[] = [
     step: 4,
     label: "Publish & monitor",
     description:
-      "Publish to Agents 365; surface in Copilot; observe via Application Insights + Foundry traces.",
-    tooling: ["Agents 365", "Copilot Studio", "Application Insights"],
+      "Publish to Microsoft Agent 365; surface in Copilot; observe via Application Insights + Foundry traces.",
+    tooling: ["Microsoft Agent 365", "Copilot Studio", "Application Insights"],
   },
 ];
 
@@ -282,10 +282,12 @@ export const COMPLIANCE_FRAMEWORKS: ComplianceFramework[] = [
   { id: "soc2", framework: "SOC 2 Type II", scope: "Microsoft + Oracle", status: "covered" },
   { id: "iso27001", framework: "ISO 27001 / 27017 / 27018", scope: "Both clouds", status: "covered" },
   { id: "fedramp", framework: "FedRAMP High", scope: "Azure Gov + Oracle Gov Cloud", status: "covered" },
-  { id: "gdpr", framework: "GDPR · EU Data Boundary", scope: "EU regions, sovereign clouds", status: "covered" },
+  { id: "gdpr", framework: "GDPR", scope: "Both clouds; EU regions", status: "covered" },
+  { id: "eu-data-boundary", framework: "EU Data Boundary", scope: "Microsoft Cloud (M365, Azure, Power Platform)", status: "covered" },
   { id: "hipaa", framework: "HIPAA / HITRUST", scope: "Healthcare data flows", status: "covered" },
   { id: "fips", framework: "FIPS 140-3", scope: "Encryption at rest + in transit", status: "covered" },
-  { id: "eu-sov", framework: "EU Sovereign Cloud", scope: "Microsoft Sovereign + Oracle EU Sovereign", status: "in-scope" },
+  { id: "ms-sov", framework: "Microsoft Sovereign Cloud", scope: "Sovereign / regulated workloads on Azure", status: "in-scope" },
+  { id: "oracle-eu-sov", framework: "Oracle EU Sovereign Cloud", scope: "Sovereign / regulated workloads on OCI", status: "in-scope" },
   { id: "il5", framework: "DoD IL5 / IL6", scope: "Azure Gov + Oracle Gov", status: "in-scope" },
 ];
 
@@ -314,10 +316,10 @@ export const MATURITY_ROWS: MaturityRow[] = [
   },
   {
     id: "p2",
-    capability: "P2 · Foundry agents in Copilot via Agents 365 (A365) + A2A",
+    capability: "P2 · Foundry agents in Copilot via Microsoft Agent 365 + A2A",
     status: "in-flight",
     ships: "Phase 2 · H2",
-    notes: "A365 control plane in preview from Ignite 2025; A2A protocol stable, multi-agent flows in pilot.",
+    notes: "Microsoft Agent 365 control plane in preview from Ignite 2025; A2A protocol stable, multi-agent flows in pilot.",
   },
   {
     id: "governance",

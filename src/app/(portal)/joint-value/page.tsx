@@ -27,13 +27,13 @@ const LENSES: ValueLens[] = [
     audience: "For Oracle",
     audienceShort: "Apps · OCI · Database",
     headline:
-      "Monetize Fusion data agentically without building a Copilot competitor — and become the agentic system of record.",
+      "Make Oracle the highest-leverage source of record for agentic AI — Fusion AI Agents and the alliance stack interoperate, both win.",
     bullets: [
-      "Reach 400M+ Microsoft 365 seats agentically without a separate UI investment.",
-      "New differentiator vs. SAP and Workday — only Oracle ships with the Microsoft alliance.",
-      "Deepens the Fusion moat — every agentic conversation reinforces Oracle as the source of record.",
-      "Drives Database@Azure and OCI consumption through agent workloads (Foundry calls home to Oracle).",
-      "Policy: Oracle keeps system-of-record authority; Microsoft owns the worker surface — no zero-sum collision.",
+      "Reach the worker wherever they are — extend Fusion's surface beyond Fusion-native UIs into Microsoft 365 without a separate UI investment.",
+      "Differentiation vs. SAP and Workday — Oracle is the system of record paired most deeply with the Microsoft worker stack.",
+      "Deepens the Fusion moat — every agentic conversation reinforces Oracle as the source of record for the answer.",
+      "Foundry agents pull from Oracle Database@Azure and OCI — consumption flows accrue to Oracle in lockstep with Fabric capacity on the Microsoft side.",
+      "Fusion AI Agents and alliance agents interoperate — Oracle keeps strategic control of the agentic experience inside Fusion.",
     ],
     accent: "oracle",
   },
@@ -41,13 +41,13 @@ const LENSES: ValueLens[] = [
     audience: "For Microsoft",
     audienceShort: "Copilot · Foundry · M365",
     headline:
-      "Close the largest unaddressed enterprise data segment for Copilot — and preempt the Salesforce + SAP joint-stack story.",
+      "Lead the joint-stack agentic category — close the largest unaddressed enterprise data segment for Copilot before it gets defined by competitors.",
     bullets: [
       "Closes the largest unaddressed enterprise data segment for Copilot — Oracle ERP, HCM, CX, Finance.",
-      "Preempts Salesforce Agentforce and a SAP joint-stack announcement before they solidify.",
-      "Foundry, Agents 365, and Purview each get a marquee anchor customer base — credibility for the whole platform.",
+      "Lead the joint-stack category before competitors define it — Salesforce Agentforce and other coalitions are racing to the same seam.",
+      "Foundry, Microsoft Agent 365, and Purview each get a marquee anchor customer base — credibility for the whole platform.",
       "Joint enterprise GTM at SLT level — strongest co-sell signal Microsoft can send to the field.",
-      "Hard differentiation vs. Google + AWS in the agent platform race — neither has Oracle's data depth.",
+      "Hard differentiation vs. Google + AWS in the agent platform race — Oracle's data depth is a strategic asset neither hyperscaler can replicate.",
     ],
     accent: "azure",
   },
@@ -146,10 +146,11 @@ export default function JointValuePage() {
           The pitch in one line
         </div>
         <p className="mt-2 text-[14px] leading-relaxed text-white/90">
-          <span className="text-oracle-red">Oracle</span> keeps the system of record.{" "}
-          <span className="text-azure-blue">Microsoft</span> keeps the system of work. Together,
-          we ship the agentic stack the enterprise actually needs — faster than anyone competing
-          alone can.
+          <span className="text-oracle-red">Oracle</span> anchors the system of record.{" "}
+          <span className="text-azure-blue">Microsoft</span> extends the system of work. Each
+          side keeps strategic surface area in the other&apos;s domain — Oracle in Fusion-native
+          experiences, Microsoft in Dynamics — and they meet in the agent layer to ship a stack
+          neither can deliver alone.
         </p>
       </section>
     </div>

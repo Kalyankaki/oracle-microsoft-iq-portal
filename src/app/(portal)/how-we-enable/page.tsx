@@ -102,6 +102,32 @@ export default function HowWeEnablePage() {
           integration patterns — sometimes all three together — and lean on a pair of
           accelerators to shorten the build.
         </p>
+
+        <div className="mt-4 rounded-lg border border-white/10 bg-white/[0.03] p-3">
+          <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            IQ tier glossary
+          </div>
+          <div className="mt-2 grid gap-2 text-[12px] leading-snug md:grid-cols-3">
+            <div>
+              <span className="text-azure-blue">Fabric IQ</span>
+              <span className="text-white/70"> = Microsoft Fabric semantic model + OneLake.</span>
+            </div>
+            <div>
+              <span className="text-iq-yellow">Foundry IQ</span>
+              <span className="text-white/70"> = Azure AI Foundry agent runtime + retrieval.</span>
+            </div>
+            <div>
+              <span className="text-iq-teal">Work IQ</span>
+              <span className="text-white/70"> = Microsoft 365 Copilot + Graph personalisation.</span>
+            </div>
+          </div>
+          <p className="mt-2 text-[11px] text-muted">
+            &ldquo;IQ&rdquo; is a presentation device for the four-tier progression. Customers
+            buy the underlying products: Microsoft Fabric (capacity), Azure AI Foundry (agent
+            runtime), Microsoft Agent 365 (control plane), Microsoft 365 Copilot (worker
+            surface).
+          </p>
+        </div>
       </section>
 
       <ArchitectureDiagram />
@@ -415,10 +441,10 @@ export default function HowWeEnablePage() {
           </div>
           <div>
             <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-              Performance &amp; SLA targets
+              Performance &amp; SLA targets (proposed)
             </div>
             <div className="text-base font-semibold tracking-tight">
-              Latency, replication lag, and uptime budgets the alliance commits to
+              Latency, replication lag, and uptime budgets the alliance is targeting
             </div>
           </div>
         </div>
@@ -438,6 +464,10 @@ export default function HowWeEnablePage() {
             </div>
           ))}
         </div>
+        <p className="mt-3 max-w-3xl text-[11.5px] leading-relaxed text-muted">
+          Targets to be ratified jointly by Foundry, Fabric, and Database@Azure engineering.
+          Until then, the underlying product SLAs apply individually.
+        </p>
       </section>
 
       <section>
