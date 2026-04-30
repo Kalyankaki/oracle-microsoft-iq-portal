@@ -25,7 +25,7 @@ const LENSES: ValueLens[] = [
   },
   {
     audience: "For Oracle",
-    audienceShort: "Steve Miranda · Larry Ellison · Clay Magouyrk",
+    audienceShort: "Apps · OCI · Database",
     headline:
       "Monetize Fusion data agentically without building a Copilot competitor — and become the agentic system of record.",
     bullets: [
@@ -39,7 +39,7 @@ const LENSES: ValueLens[] = [
   },
   {
     audience: "For Microsoft",
-    audienceShort: "Charles Lamanna · Jared Spataro · Yusuf Mehdi",
+    audienceShort: "Copilot · Foundry · M365",
     headline:
       "Close the largest unaddressed enterprise data segment for Copilot — and preempt the Salesforce + SAP joint-stack story.",
     bullets: [
