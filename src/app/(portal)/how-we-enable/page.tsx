@@ -1,4 +1,5 @@
 import { ArrowRight, Database, Network, Plug, Rocket, Shield, Workflow } from "lucide-react";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import { ACCELERATORS, INTEGRATION_PATTERNS } from "@/lib/data/how-we-enable";
 
 const PATTERN_ICONS = [Database, Workflow, Plug];
@@ -28,6 +29,8 @@ export default function HowWeEnablePage() {
           accelerators to shorten the build.
         </p>
       </section>
+
+      <ArchitectureDiagram />
 
       <section>
         <div className="mb-3 flex items-end justify-between">

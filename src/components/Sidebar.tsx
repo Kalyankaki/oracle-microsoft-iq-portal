@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Boxes, ClipboardList, HeartPulse, Rocket, Sparkles, UsersRound } from "lucide-react";
+import {
+  Boxes,
+  ClipboardList,
+  Handshake,
+  HeartPulse,
+  Rocket,
+  Sparkles,
+  Swords,
+  UsersRound,
+} from "lucide-react";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
 import { cn } from "@/lib/utils";
 
@@ -24,63 +33,123 @@ const SCENARIO_ICON_TINT: Record<ScenarioId, string> = {
   "customer-health": "text-iq-teal",
 };
 
+interface NavLinkProps {
+  href: string;
+  active: boolean;
+  icon: React.ReactNode;
+  label: string;
+  badge?: string;
+  description?: string;
+  activeAccent: "teal" | "yellow" | "azure" | "oracle";
+}
+
+const ACTIVE_ACCENT: Record<NavLinkProps["activeAccent"], string> = {
+  teal: "border-iq-teal/40 bg-iq-teal/[0.08]",
+  yellow: "border-iq-yellow/40 bg-iq-yellow/[0.08]",
+  azure: "border-azure-blue/40 bg-azure-blue/[0.08]",
+  oracle: "border-oracle-red/40 bg-oracle-red/[0.08]",
+};
+
+function PrimaryLink({ href, active, icon, label, badge, description, activeAccent }: NavLinkProps) {
+  return (
+    <div className="px-3">
+      <Link
+        href={href}
+        className={cn(
+          "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
+          active
+            ? ACTIVE_ACCENT[activeAccent]
+            : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]",
+        )}
+      >
+        {icon}
+        {label}
+        {badge && (
+          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
+            {badge}
+          </span>
+        )}
+      </Link>
+      {description && (
+        <div className="mt-1 px-3 text-[11px] text-muted">{description}</div>
+      )}
+    </div>
+  );
+}
+
 export default function Sidebar() {
   const pathname = usePathname() ?? "";
   const activeScenario = pathname.startsWith("/scenario/") ? pathname.split("/")[2] : null;
   const isExecSummary = pathname.startsWith("/exec-summary");
+  const isJointValue = pathname.startsWith("/joint-value");
+  const isCompetitive = pathname.startsWith("/competitive");
   const isHowWeEnable = pathname.startsWith("/how-we-enable");
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r border-white/10 bg-navy-900/60">
       <div className="px-5 pb-2 pt-5">
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-          Start here
+          The Alliance
+        </div>
+        <div className="mt-1 flex items-center gap-2 text-sm font-semibold">
+          <Sparkles className="h-4 w-4 text-iq-yellow" />
+          The pitch
         </div>
       </div>
 
-      <div className="px-3">
-        <Link
+      <div className="space-y-2.5">
+        <PrimaryLink
           href="/exec-summary"
-          className={cn(
-            "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
-            isExecSummary
-              ? "border-iq-teal/40 bg-iq-teal/[0.08]"
-              : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]",
-          )}
-        >
-          <ClipboardList className="h-4 w-4 text-iq-teal" />
-          Exec Summary
-          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
-            Overview
-          </span>
-        </Link>
-        <div className="mt-1 px-3 text-[11px] text-muted">
-          Market context and the narrative across all three scenarios.
-        </div>
+          active={isExecSummary}
+          icon={<ClipboardList className="h-4 w-4 text-iq-teal" />}
+          label="Exec Summary"
+          badge="Overview"
+          description="Market context, signals, and the narrative across all three scenarios."
+          activeAccent="teal"
+        />
+        <PrimaryLink
+          href="/joint-value"
+          active={isJointValue}
+          icon={<Handshake className="h-4 w-4 text-iq-teal" />}
+          label="Joint Value Proposition"
+          badge="Why"
+          description="Value lens for the customer, Oracle, and Microsoft."
+          activeAccent="teal"
+        />
+        <PrimaryLink
+          href="/competitive"
+          active={isCompetitive}
+          icon={<Swords className="h-4 w-4 text-oracle-red" />}
+          label="Competitive Landscape"
+          badge="Vs."
+          description="Why Salesforce, SAP, and ServiceNow can't ship this stack."
+          activeAccent="oracle"
+        />
       </div>
 
-      <div className="mt-3 px-3">
-        <Link
-          href="/how-we-enable"
-          className={cn(
-            "group flex items-center gap-2 rounded-lg border px-3 py-3 text-sm font-semibold transition",
-            isHowWeEnable
-              ? "border-iq-yellow/40 bg-iq-yellow/[0.08]"
-              : "border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]",
-          )}
-        >
+      <div className="mx-3 my-4 h-px bg-white/10" />
+
+      <div className="px-5 pb-3">
+        <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+          How it works
+        </div>
+        <div className="mt-1 flex items-center gap-2 text-sm font-semibold">
           <Rocket className="h-4 w-4 text-iq-yellow" />
-          How We Enable This
-          <span className="ml-auto font-mono text-[9px] uppercase tracking-widest text-muted">
-            Tech
-          </span>
-        </Link>
-        <div className="mt-1 px-3 text-[11px] text-muted">
-          Three integration patterns and the accelerators behind them.
+          The technology
         </div>
       </div>
 
-      <div className="mx-3 my-3 h-px bg-white/10" />
+      <PrimaryLink
+        href="/how-we-enable"
+        active={isHowWeEnable}
+        icon={<Rocket className="h-4 w-4 text-iq-yellow" />}
+        label="How We Enable This"
+        badge="Stack"
+        description="Three integration patterns and two accelerators."
+        activeAccent="yellow"
+      />
+
+      <div className="mx-3 my-4 h-px bg-white/10" />
 
       <div className="px-5 pb-3">
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted">

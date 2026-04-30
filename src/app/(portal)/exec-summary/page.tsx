@@ -33,16 +33,19 @@ export default function ExecSummaryPage() {
             <Sparkles className="h-5 w-5" />
           </div>
           <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-            Market context
+            The Enterprise Agent Alliance
           </div>
           <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
-            Why Microsoft + Oracle, why now
+            Oracle × Microsoft · proposed
           </div>
         </div>
 
         <h1 className="mt-3 text-xl font-semibold tracking-tight md:text-2xl">
           Agentic AI is the next platform shift — Microsoft and Oracle can lead it together.
         </h1>
+        <p className="mt-2 text-[13px] font-medium leading-relaxed text-white/85">
+          Oracle data. Microsoft agents. The complete agentic stack for the enterprise.
+        </p>
 
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
@@ -186,6 +189,20 @@ export default function ExecSummaryPage() {
           Cited from public Gartner press releases (Oct 2024, Jun 2025, Aug 2025), Microsoft 2025
           Annual Work Trend Index, and McKinsey State of AI 2025.
         </p>
+
+        <div className="mt-5 rounded-xl border border-iq-yellow/40 bg-iq-yellow/[0.06] p-4">
+          <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            Why now
+          </div>
+          <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
+            Adoption is mass-market — but value capture is rare and 40%+ of agentic projects
+            will be cancelled by 2027. The pattern is clear: orgs that bolt agents onto
+            disconnected data stacks fail; orgs that pair the system of record with the system
+            of work win. That seam — Oracle Fusion to Microsoft 365 — is the largest unaddressed
+            opportunity in enterprise software, and the window to coordinate a stack closes the
+            moment a competitor announces theirs.
+          </p>
+        </div>
       </section>
 
       <section className="rounded-2xl border border-white/10 bg-gradient-to-br from-navy-900/80 via-navy-900/60 to-azure-blue/[0.06] p-6">
