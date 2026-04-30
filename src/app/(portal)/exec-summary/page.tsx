@@ -5,11 +5,13 @@ import {
   ClipboardList,
   HeartPulse,
   LineChart,
+  Repeat,
   Sparkles,
   Target,
   UsersRound,
 } from "lucide-react";
 import { SCENARIO_PROGRESSIONS } from "@/lib/data/exec-summary";
+import { CONSUMPTION_FLYWHEEL } from "@/lib/data/how-we-enable";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
 import { TIERS, type TierId } from "@/lib/data/tiers";
 import { cn } from "@/lib/utils";
@@ -432,9 +434,103 @@ export default function ExecSummaryPage() {
           The prize isn&apos;t just license revenue — it&apos;s consumption across both stacks.
           Every agent invocation drives Microsoft Fabric capacity, Foundry tokens, and Copilot
           seats <span className="text-muted">·</span> while compounding Oracle Database@Azure,
-          OCI, and Fusion subscription consumption. See <span className="text-iq-yellow">Joint
-          consumption flywheel</span> on the How We Enable This page.
+          OCI, and Fusion subscription consumption. The flywheel below shows the mechanics.
         </p>
+      </section>
+
+      <section className="overflow-hidden rounded-2xl border border-iq-yellow/30 bg-navy-900/70">
+        <div className="flex flex-wrap items-center gap-3 border-b border-iq-yellow/20 bg-iq-yellow/[0.04] px-5 py-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-iq-yellow/30 bg-iq-yellow/10 text-iq-yellow">
+            <Repeat className="h-4 w-4" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Joint consumption flywheel
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              Every agent invocation drives revenue across both clouds
+            </div>
+          </div>
+          <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            One workflow · two stacks · five revenue lines
+          </div>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="bg-white/[0.02]">
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Step
+                </th>
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-muted">
+                  Worker action
+                </th>
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-azure-blue">
+                  Microsoft consumption
+                </th>
+                <th className="border-b border-white/10 px-3 py-2.5 font-mono text-[10px] uppercase tracking-widest text-oracle-red">
+                  Oracle consumption
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {CONSUMPTION_FLYWHEEL.map((s) => (
+                <tr key={s.step} className="border-t border-white/5 odd:bg-white/[0.015]">
+                  <td className="px-3 py-3 align-top">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-iq-yellow/40 bg-iq-yellow/10 font-mono text-[10px] font-semibold text-iq-yellow">
+                      {s.step}
+                    </span>
+                  </td>
+                  <td className="px-3 py-3 align-top text-[12.5px] font-medium text-white/90">
+                    {s.workerAction}
+                  </td>
+                  <td className="px-3 py-3 align-top">
+                    {s.microsoft.length === 0 ? (
+                      <span className="text-[11px] text-muted">—</span>
+                    ) : (
+                      <div className="flex flex-wrap gap-1">
+                        {s.microsoft.map((m) => (
+                          <span
+                            key={m}
+                            className="rounded-full border border-azure-blue/30 bg-azure-blue/10 px-2 py-0.5 font-mono text-[10px] text-azure-blue"
+                          >
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-3 py-3 align-top">
+                    {s.oracle.length === 0 ? (
+                      <span className="text-[11px] text-muted">—</span>
+                    ) : (
+                      <div className="flex flex-wrap gap-1">
+                        {s.oracle.map((m) => (
+                          <span
+                            key={m}
+                            className="rounded-full border border-oracle-red/30 bg-oracle-red/10 px-2 py-0.5 font-mono text-[10px] text-oracle-red"
+                          >
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="border-t border-white/10 bg-white/[0.02] px-5 py-3">
+          <p className="max-w-3xl text-[12.5px] leading-relaxed text-white/85">
+            <span className="text-iq-yellow">The flywheel:</span> the more Oracle data lands in
+            OneLake, the more Fabric capacity gets consumed; the more agents run in Foundry,
+            the more tokens flow; the more Copilot drives invocations, the more it pulls on
+            both. Microsoft monetizes <span className="text-azure-blue">Fabric + Foundry +
+            Copilot</span> simultaneously; Oracle monetizes{" "}
+            <span className="text-oracle-red">Database@Azure + OCI + Fusion</span> in lockstep.
+          </p>
+        </div>
       </section>
 
       <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
