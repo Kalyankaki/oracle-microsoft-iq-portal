@@ -1,4 +1,4 @@
-import { Boxes, ClipboardList, HeartPulse, UsersRound } from "lucide-react";
+import { Boxes, ClipboardList, HeartPulse, Sparkles, UsersRound } from "lucide-react";
 import { SCENARIO_PROGRESSIONS } from "@/lib/data/exec-summary";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
 import { TIERS, type TierId } from "@/lib/data/tiers";
@@ -27,22 +27,88 @@ const TIER_BENEFIT_TEXT: Record<TierId, string> = {
 export default function ExecSummaryPage() {
   return (
     <div className="space-y-6">
+      <section className="rounded-2xl border border-white/10 bg-gradient-to-br from-navy-900/80 via-navy-900/60 to-oracle-red/[0.06] p-6">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-iq-yellow">
+            <Sparkles className="h-5 w-5" />
+          </div>
+          <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            Market context
+          </div>
+          <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            Why Microsoft + Oracle, why now
+          </div>
+        </div>
+
+        <h1 className="mt-3 text-xl font-semibold tracking-tight md:text-2xl">
+          Agentic AI is the next platform shift — Microsoft and Oracle can lead it together.
+        </h1>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              The shift
+            </div>
+            <div className="mt-1 text-[13px] font-semibold tracking-tight">
+              From answering to acting
+            </div>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-white/80">
+              Agentic AI moves past chat. Agents reason over enterprise data, plan multi-step
+              work, and execute with grounded citations — they draft the email, update the
+              record, and close the loop. Every platform vendor is racing to be where these
+              agents live.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              The seam
+            </div>
+            <div className="mt-1 text-[13px] font-semibold tracking-tight">
+              Where the work actually happens
+            </div>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-white/80">
+              The system of record sits in <span className="text-oracle-red">Oracle Fusion</span>
+              {" "}— SCM, HCM, CX, Finance. The system of work sits in{" "}
+              <span className="text-azure-blue">Microsoft 365</span> — Outlook, Teams, Copilot.
+              Whoever closes the seam between them owns agentic transformation in the
+              enterprise.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-iq-teal/30 bg-iq-teal/[0.06] p-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              The opportunity
+            </div>
+            <div className="mt-1 text-[13px] font-semibold tracking-tight">
+              Lead it together
+            </div>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-white/85">
+              Oracle&rsquo;s depth of business data plus Microsoft&rsquo;s agent runtime (Foundry),
+              governance (Purview), and worker surface (Copilot, Teams) is the only complete
+              agentic stack in the enterprise. No other partnership covers data, reasoning, and
+              the worker end-to-end.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="rounded-2xl border border-white/10 bg-gradient-to-br from-navy-900/80 via-navy-900/60 to-azure-blue/[0.06] p-6">
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-iq-teal">
             <ClipboardList className="h-5 w-5" />
           </div>
           <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-            Start here · executive summary
+            What this portal shows
           </div>
           <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
             Oracle Fusion × Microsoft IQ
           </div>
         </div>
 
-        <h1 className="mt-3 text-xl font-semibold tracking-tight md:text-2xl">
+        <h2 className="mt-3 text-lg font-semibold tracking-tight md:text-xl">
           Same Oracle data. Same prompt. Four very different answers.
-        </h1>
+        </h2>
         <p className="mt-3 max-w-3xl text-[13.5px] leading-relaxed text-white/85">
           This portal shows what happens when Oracle Fusion data is fronted by Microsoft Copilot
           and progressively layered with three Microsoft IQs — Fabric, Foundry, and Work. The
