@@ -1,4 +1,4 @@
-import { Boxes, ClipboardList, HeartPulse, Sparkles, UsersRound } from "lucide-react";
+import { AlertTriangle, Boxes, ClipboardList, HeartPulse, LineChart, Sparkles, UsersRound } from "lucide-react";
 import { SCENARIO_PROGRESSIONS } from "@/lib/data/exec-summary";
 import { SCENARIOS, type ScenarioId } from "@/lib/data/scenarios";
 import { TIERS, type TierId } from "@/lib/data/tiers";
@@ -91,6 +91,101 @@ export default function ExecSummaryPage() {
             </p>
           </div>
         </div>
+      </section>
+
+      <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-azure-blue">
+            <LineChart className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+              Market signals
+            </div>
+            <div className="text-base font-semibold tracking-tight">
+              The numbers say move now
+            </div>
+          </div>
+          <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
+            Independent research · public sources
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="rounded-xl border border-azure-blue/30 bg-azure-blue/[0.06] p-4">
+            <div className="text-2xl font-semibold tracking-tight text-white">33%</div>
+            <div className="mt-1 text-[12.5px] leading-snug text-white/85">
+              of enterprise software applications will include agentic AI by 2028, up from less
+              than 1% in 2024.
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Source · Gartner, 2024
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-iq-yellow/30 bg-iq-yellow/[0.06] p-4">
+            <div className="text-2xl font-semibold tracking-tight text-white">15%</div>
+            <div className="mt-1 text-[12.5px] leading-snug text-white/85">
+              of day-to-day work decisions will be made autonomously by agentic AI by 2028 — up
+              from 0% in 2024.
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Source · Gartner, 2024
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-iq-teal/30 bg-iq-teal/[0.06] p-4">
+            <div className="text-2xl font-semibold tracking-tight text-white">$450B+</div>
+            <div className="mt-1 text-[12.5px] leading-snug text-white/85">
+              projected agentic enterprise software market by 2035 — ~30% of total enterprise
+              app revenue, up from 2% in 2025.
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Source · Gartner, 2025
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="text-2xl font-semibold tracking-tight text-white">82%</div>
+            <div className="mt-1 text-[12.5px] leading-snug text-white/85">
+              of leaders plan to use agents to expand workforce capacity in the next 12–18
+              months. 81% expect agents integrated into operations.
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Source · Microsoft Work Trend Index, 2025
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+            <div className="text-2xl font-semibold tracking-tight text-white">88%</div>
+            <div className="mt-1 text-[12.5px] leading-snug text-white/85">
+              of organizations now use AI in at least one function — but only 5.5% see real
+              financial returns. The gap is data and integration.
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Source · McKinsey State of AI, 2025
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-oracle-red/40 bg-oracle-red/[0.07] p-4">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4 text-oracle-red" />
+              <div className="text-2xl font-semibold tracking-tight text-white">40%+</div>
+            </div>
+            <div className="mt-1 text-[12.5px] leading-snug text-white/85">
+              of agentic AI projects will be canceled by end of 2027 — escalating costs, unclear
+              value, weak governance. Architecture matters.
+            </div>
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted">
+              Source · Gartner, 2025
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-4 max-w-3xl text-[12px] leading-relaxed text-muted">
+          Cited from public Gartner press releases (Oct 2024, Jun 2025, Aug 2025), Microsoft 2025
+          Annual Work Trend Index, and McKinsey State of AI 2025.
+        </p>
       </section>
 
       <section className="rounded-2xl border border-white/10 bg-gradient-to-br from-navy-900/80 via-navy-900/60 to-azure-blue/[0.06] p-6">
