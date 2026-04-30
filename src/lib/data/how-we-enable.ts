@@ -61,9 +61,11 @@ export const INTEGRATION_PATTERNS: IntegrationPattern[] = [
     title: "Oracle-native agents connected through MCP",
     oneLiner: "Let Oracle agents participate in Copilot workflows via MCP servers.",
     description:
-      "Agents built natively inside Oracle (e.g. Fusion-resident copilots) expose their tools and context through Model Context Protocol (MCP) servers. Microsoft Copilot and Foundry agents can invoke them, hand off work, and incorporate their results — keeping the system of record authoritative while extending reach into the Microsoft worker surface.",
+      "Agents built natively in the Oracle estate — Fusion-resident copilots, Oracle Database AI agents, OCI-hosted workloads, or partner agents on Oracle data — expose their tools and context through Model Context Protocol (MCP) servers. Microsoft Copilot and Foundry agents can invoke them, hand off work, and incorporate their results — keeping the system of record authoritative while extending reach into the Microsoft worker surface.",
     components: [
-      "Oracle Fusion Agents",
+      "Oracle Fusion AI Agents",
+      "Oracle Database AI agents",
+      "Partner agents (Oracle estate)",
       "MCP server",
       "Azure AI Foundry",
       "Microsoft Copilot",
@@ -90,7 +92,7 @@ export const ORACLE_DATA_LOCATIONS: OracleDataLocation[] = [
     name: "Oracle Fusion (SaaS)",
     description:
       "Fusion ERP, HCM, SCM, CX — the system of record for most of the Fortune 2000.",
-    ingestPattern: "Fabric Mirroring · GoldenGate Free",
+    ingestPattern: "Fabric Mirroring · Oracle GoldenGate",
     unlockedFor: "Out-of-the-box for Fusion modules; the demo today.",
     isFlagship: true,
   },

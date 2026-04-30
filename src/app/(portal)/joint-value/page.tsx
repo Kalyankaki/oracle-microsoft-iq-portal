@@ -30,7 +30,7 @@ const LENSES: ValueLens[] = [
       "Make Oracle the highest-leverage source of record for agentic AI — Fusion AI Agents and the alliance stack interoperate, both win.",
     bullets: [
       "Reach the worker wherever they are — extend Fusion's surface beyond Fusion-native UIs into Microsoft 365 without a separate UI investment.",
-      "Differentiation vs. SAP and Workday — Oracle is the system of record paired most deeply with the Microsoft worker stack.",
+      "Differentiation vs. SAP and Workday — where Oracle is deployed as the system of record, it's paired most deeply with the Microsoft worker stack.",
       "Deepens the Fusion moat — every agentic conversation reinforces Oracle as the source of record for the answer.",
       "Foundry agents pull from Oracle Database@Azure and OCI — consumption flows accrue to Oracle in lockstep with Fabric capacity on the Microsoft side.",
       "Fusion AI Agents and alliance agents interoperate — Oracle keeps strategic control of the agentic experience inside Fusion.",
