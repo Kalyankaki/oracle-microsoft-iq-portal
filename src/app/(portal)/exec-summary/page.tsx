@@ -211,22 +211,167 @@ export default function ExecSummaryPage() {
             <ClipboardList className="h-5 w-5" />
           </div>
           <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
-            What this portal shows
+            The business case
           </div>
           <div className="ml-auto hidden font-mono text-[10px] uppercase tracking-widest text-muted md:block">
-            Oracle Fusion × Microsoft IQ
+            Oracle data × Microsoft IQ
           </div>
         </div>
 
         <h2 className="mt-3 text-lg font-semibold tracking-tight md:text-xl">
-          Same Oracle data. Same prompt. Four very different answers.
+          Each IQ layer turns Oracle data into a different — and more valuable — kind of agent.
         </h2>
         <p className="mt-3 max-w-3xl text-[13.5px] leading-relaxed text-white/85">
-          This portal shows what happens when Oracle Fusion data is fronted by Microsoft Copilot
-          and progressively layered with three Microsoft IQs — Fabric, Foundry, and Work. The
-          same business question gets asked at every tier; the answer goes from generic, to
-          quantified, to reasoned-with-actions, to a draft email already in your outbox.
+          The alliance unlocks four agent archetypes from the same Oracle Fusion source. Each
+          tier compounds on the last; the value isn&apos;t additive, it&apos;s multiplicative. By
+          Tier 3 the agent isn&apos;t reporting on the business — it&apos;s running parts of it.
         </p>
+
+        <div className="mt-5 grid gap-3 md:grid-cols-4">
+          <div className="flex flex-col rounded-xl border border-white/10 bg-white/[0.02] p-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                T0 · Baseline
+              </span>
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-1.5 py-0.5 font-mono text-[8.5px] uppercase tracking-widest text-muted">
+                Oracle data
+              </span>
+            </div>
+            <div className="mt-1 text-[14px] font-semibold tracking-tight">Lookup agent</div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/80">
+              Knows where the data lives. Describes tables, fields, definitions. Cannot
+              interpret.
+            </p>
+            <div className="mt-3 rounded-md border border-white/10 bg-white/[0.03] p-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Example
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-white/85">
+                &ldquo;Here are the Oracle SCM tables that hold supplier and PO data.&rdquo;
+              </p>
+            </div>
+            <div className="mt-3 border-t border-white/10 pt-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Value
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-white/70">
+                Foundation only — table stakes. <span className="text-muted">$0 incremental decision value.</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col rounded-xl border border-azure-blue/30 bg-azure-blue/[0.06] p-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-azure-blue">
+                T1 · + Fabric IQ
+              </span>
+              <span className="rounded-full border border-azure-blue/30 bg-azure-blue/10 px-1.5 py-0.5 font-mono text-[8.5px] uppercase tracking-widest text-azure-blue">
+                Semantic
+              </span>
+            </div>
+            <div className="mt-1 text-[14px] font-semibold tracking-tight">Insight agent</div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/85">
+              Joins Oracle&apos;s semantic model. Quantifies, aggregates, trends — answers
+              &ldquo;what does the data say?&rdquo;
+            </p>
+            <div className="mt-3 rounded-md border border-azure-blue/20 bg-white/[0.03] p-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Example
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-white/85">
+                &ldquo;EMEA Q3 exposure is $47.2M across 84 suppliers; on-time delivery has
+                fallen to 87%.&rdquo;
+              </p>
+            </div>
+            <div className="mt-3 border-t border-azure-blue/20 pt-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Value
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-azure-blue">
+                Quarterly review prep: days → minutes. Defensible numbers, no SQL.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col rounded-xl border border-iq-yellow/30 bg-iq-yellow/[0.06] p-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-iq-yellow">
+                T2 · + Foundry IQ
+              </span>
+              <span className="rounded-full border border-iq-yellow/30 bg-iq-yellow/10 px-1.5 py-0.5 font-mono text-[8.5px] uppercase tracking-widest text-iq-yellow">
+                Reasoning
+              </span>
+            </div>
+            <div className="mt-1 text-[14px] font-semibold tracking-tight">Decision agent</div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/85">
+              Reasons across the data. Ranks moves, projects $-impact, cites every claim back to
+              Oracle source.
+            </p>
+            <div className="mt-3 rounded-md border border-iq-yellow/20 bg-white/[0.03] p-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Example
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-white/85">
+                &ldquo;5 prioritized de-risk plays. $18.6M mitigatable in Q3. First move:
+                dual-source 25% of Adriatica volume.&rdquo;
+              </p>
+            </div>
+            <div className="mt-3 border-t border-iq-yellow/20 pt-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Value
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-iq-yellow">
+                Replaces an analyst week with a conversation. $-grade decisions on demand.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col rounded-xl border border-iq-teal/40 bg-iq-teal/[0.07] p-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-iq-teal">
+                T3 · + Work IQ
+              </span>
+              <span className="rounded-full border border-iq-teal/40 bg-iq-teal/10 px-1.5 py-0.5 font-mono text-[8.5px] uppercase tracking-widest text-iq-teal">
+                Execution
+              </span>
+            </div>
+            <div className="mt-1 text-[14px] font-semibold tracking-tight">Execution agent</div>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/85">
+              Personalized to the worker via M365 Graph. Drafts the email, the Teams message,
+              the meeting agenda — ready to send.
+            </p>
+            <div className="mt-3 rounded-md border border-iq-teal/30 bg-white/[0.03] p-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Example
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-white/85">
+                &ldquo;Drafted: green-light email to Maria, Teams ping to Tomás, pre-filled
+                10am ops-sync agenda — all in your queue.&rdquo;
+              </p>
+            </div>
+            <div className="mt-3 border-t border-iq-teal/30 pt-2.5">
+              <div className="font-mono text-[9px] uppercase tracking-widest text-muted">
+                Value
+              </div>
+              <p className="mt-1 text-[11.5px] leading-snug text-iq-teal">
+                The decision is in the calendar before the meeting starts. Hours back per
+                worker, per week.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-5 rounded-xl border border-iq-teal/40 bg-iq-teal/[0.06] p-4">
+          <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+            The compounding effect
+          </div>
+          <p className="mt-1.5 text-[13px] leading-relaxed text-white/90">
+            Most agentic projects ship at T1 and stall — they report, but never act. The
+            alliance ships the full progression. Tier-3 execution agents are worth more than
+            the sum of the lower tiers because they don&apos;t just inform decisions; they
+            close them. That is the joint business case in one sentence.
+          </p>
+        </div>
       </section>
 
       <section className="rounded-2xl border border-white/10 bg-navy-900/60 p-5">
