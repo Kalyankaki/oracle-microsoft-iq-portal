@@ -20,7 +20,26 @@ Most agentic programmes in market ship at Tier 1 (insight) and stall — they re
 
 ---
 
-## 1. Why now
+## 1. Agentic momentum — the public-data picture
+
+Six numbers from independent sources frame the FY26 window. They are not our numbers — they are the market's.
+
+| | Stat | Implication for Microsoft | Source |
+|---|---|---|---|
+| **33%** | of enterprise software applications will include agentic AI by 2028 — up from <1% in 2024 | Agentic is becoming a default feature of every enterprise app, not an option | Gartner, Oct 2024 |
+| **15%** | of day-to-day work decisions will be made autonomously by agentic AI by 2028 — up from 0% in 2024 | The decision loop itself is moving inside the model | Gartner, Oct 2024 |
+| **$450B+** | projected agentic enterprise-software market by 2035 — ~30% of total enterprise app revenue, up from 2% in 2025 | This is a category-creation event, not a feature war | Gartner, Aug 2025 |
+| **82% / 81%** | of leaders plan to use agents to expand workforce capacity in the next 12–18 months / expect agents integrated into operations | Demand has crossed from interest to budget | Microsoft 2025 Annual Work Trend Index |
+| **88% / 5.5%** | of organisations now use AI in at least one function — but only 5.5% see real financial returns | The gap is data and integration, not model capability — the alliance's exact territory | McKinsey State of AI 2025 |
+| **40%+** | of agentic AI projects will be cancelled by end of 2027 — escalating costs, unclear value, weak governance | Architecture choices made now decide who survives the cull | Gartner, Jun 2025 |
+
+**The pattern.** Adoption is mass-market, but value capture is rare. Organisations that bolt agents onto disconnected data stacks stall; organisations that pair their **data of record** with their **system of work** compound results. For the Oracle installed base, the seam between **Oracle data anywhere** and **Microsoft Copilot** is among the largest unaddressed opportunities in enterprise software — and first-mover lead time compounds every quarter the alliance is shipping.
+
+> Sources: public Gartner press releases (Oct 2024, Jun 2025, Aug 2025); Microsoft 2025 Annual Work Trend Index; McKinsey State of AI 2025.
+
+---
+
+## 2. Why now
 
 Three forcing functions converge in FY26:
 
@@ -32,13 +51,13 @@ The competitive set is responding. **Salesforce + Agentforce** is selling agents
 
 ---
 
-## 2. The thesis — closing the seam
+## 3. The thesis — closing the seam
 
 Two assets, one prize.
 
 | Asset | Owner | What it does |
 |---|---|---|
-| **System of record** | Oracle (where deployed) | Authoritative customer, supplier, employee, financial, transactional data — Fusion SaaS, Database@Azure, OCI, on-premises. |
+| **System of record** | Oracle (where deployed) | Authoritative customer, supplier, employee, financial, transactional data — across **all Oracle estates**: Fusion SaaS, Oracle Database@Azure, Oracle Database on OCI / Exadata Cloud, and Oracle on-premises (Exadata, RAC). |
 | **System of work** | Microsoft | Where the worker actually decides and acts — Outlook, Teams, Copilot, Microsoft Graph. |
 | **The seam** | **Un-owned today.** The alliance closes it. | Grounded reasoning on Oracle data, governed end-to-end, delivered in the worker's flow. |
 
@@ -46,7 +65,7 @@ The strategic argument to a customer is one sentence: **"Your data of record sta
 
 ---
 
-## 3. What we sell — the four-tier progression
+## 4. What we sell — the four-tier progression
 
 The same Oracle data, the same prompt, four very different agents. Each tier compounds on the last; the value is **multiplicative, not additive**.
 
@@ -59,25 +78,25 @@ The same Oracle data, the same prompt, four very different agents. Each tier com
 
 **The compounding effect is the joint business case.** Most competitors stop at T1. The alliance ships T0 → T3.
 
-Three flagship demo scenarios, identical structure:
+Three flagship demo scenarios. The data anchor in each is shown in parentheses; the same pattern extends to **any Oracle data domain** the customer runs — Oracle Database, Exadata Cloud, OCI workloads, on-prem — wherever their system of record actually sits.
 
-- **Supply Chain Risk** (Fusion SCM / Procurement) — *"What's our Q3 supply chain risk exposure in EMEA?"* T1 surfaces $47.2M EMEA exposure across 84 suppliers; T2 returns 5 prioritised de-risk plays with $18.6M mitigatable in Q3; T3 drafts the supplier emails and pre-fills the 10am ops sync.
-- **Workforce Planning** (Fusion HCM) — *"Summarise open requisitions on my team and flag any at risk of FY-close."* T1 → 14 open reqs, 5 at FY-close risk; T2 → per-req re-scope/push/internal-mobility plan; T3 → Friday review with the manager pre-filled.
-- **Customer Health** (Fusion CX) — *"Which accounts are showing churn signals, and what's the next play?"* T1 → 32 accounts, 4 at risk, $6.0M ARR exposed; T2 → highest-yield save play per account with $4.6M recoverable; T3 → QBR pre-loaded, CXO call prep ready.
+- **Supply Chain Risk** (Oracle SCM data — Fusion SCM / Procurement, plus supplier-master and PO data wherever it lives in the Oracle estate) — *"What's our Q3 supply chain risk exposure in EMEA?"* T1 surfaces $47.2M EMEA exposure across 84 suppliers; T2 returns 5 prioritised de-risk plays with $18.6M mitigatable in Q3; T3 drafts the supplier emails and pre-fills the 10am ops sync.
+- **Workforce Planning** (Oracle HCM data — Fusion HCM, plus any Oracle DB-resident workforce data) — *"Summarise open requisitions on my team and flag any at risk of FY-close."* T1 → 14 open reqs, 5 at FY-close risk; T2 → per-req re-scope/push/internal-mobility plan; T3 → Friday review with the manager pre-filled.
+- **Customer Health** (Oracle CX data — Fusion CX, plus any Oracle DB-resident customer / service data) — *"Which accounts are showing churn signals, and what's the next play?"* T1 → 32 accounts, 4 at risk, $6.0M ARR exposed; T2 → highest-yield save play per account with $4.6M recoverable; T3 → QBR pre-loaded, CXO call prep ready.
 
-These three are the seed demos. The industry blueprints (§6) are the production line.
+These three are the seed demos. The industry blueprints (§7) are the production line.
 
 ---
 
-## 4. What we ship — three patterns, two bridges
+## 5. What we ship — three patterns, two bridges
 
 ### Three integration patterns
 
 | | Pattern | One-liner | When to use |
 |---|---|---|---|
-| **P1** | Oracle → OneLake mirror | Mirror Fusion / DB@Azure / OCI / on-prem into Microsoft Fabric so Copilot can reason over it | Default for analytical, cross-domain questions |
+| **P1** | Oracle → OneLake mirror | Mirror **all Oracle data estates** — Fusion SaaS, Database@Azure, Database on OCI / Exadata Cloud, Oracle on-prem (Exadata, RAC) — into Microsoft Fabric so Copilot can reason over it | Default for analytical, cross-domain questions |
 | **P2** | Foundry agents in Copilot via Agent 365 + A2A | Build in Foundry, manage in Agent 365, deliver in Copilot | When you need a custom, specialised, multi-agent flow in the worker's surface |
-| **P3** | Oracle agents via MCP | Oracle-native agents (Fusion AI Agents, OCI workloads) participate in Copilot via MCP | When the action must execute inside Oracle (write-backs, transactions, policy-bound) |
+| **P3** | Oracle agents via MCP | Oracle-native agents (Fusion AI Agents, **Oracle Database AI agents**, OCI-hosted workloads, partner agents on Oracle data) participate in Copilot via MCP | When the action must execute inside Oracle (write-backs, transactions, policy-bound) |
 
 ### Two bridges (the joint accelerators)
 
@@ -103,7 +122,7 @@ SOC 2 Type II · ISO 27001 / 27017 / 27018 · FedRAMP High · GDPR · EU Data Bo
 
 ---
 
-## 5. The economics — joint consumption flywheel
+## 6. The economics — joint consumption flywheel
 
 One workflow lights up **five revenue lines on each side** — and a joint $-meter that grows with depth of deployment, not just seat count.
 
@@ -119,7 +138,7 @@ One workflow lights up **five revenue lines on each side** — and a joint $-met
 
 ---
 
-## 6. The market — competition, migrations, industry blueprints
+## 7. The market — competition, migrations, industry blueprints
 
 ### Competitive frame
 
@@ -141,16 +160,16 @@ One workflow lights up **five revenue lines on each side** — and a joint $-met
 
 | Industry | Flagship agent | Oracle anchor | Microsoft surface |
 |---|---|---|---|
-| **Banking & Capital Markets** | Loan-portfolio risk | OFSAA · Fusion ERP | Copilot in Teams for RMs; Outlook to risk committee |
-| **Manufacturing & Supply Chain** | Plant performance + supplier risk | Fusion SCM · Procurement · IoT Cloud | Copilot on Teams Walls in plant ops rooms |
-| **Retail & Consumer** | Inventory + customer health | Oracle Retail Suite · Fusion CX · Loyalty | Copilot for store managers; Teams to district leadership |
-| **Public Sector** | Citizen service + grants | Public Sector Cloud · Fusion HCM | Copilot for caseworkers; Graph for case routing/SLA |
+| **Banking & Capital Markets** | Loan-portfolio risk | OFSAA · Fusion ERP · **Oracle Database** (positions, risk warehouses, regulatory submissions) | Copilot in Teams for RMs; Outlook to risk committee |
+| **Manufacturing & Supply Chain** | Plant performance + supplier risk | Fusion SCM · Procurement · IoT Cloud · **Oracle DB / Exadata** (MES, plant historian, SCADA) | Copilot on Teams Walls in plant ops rooms |
+| **Retail & Consumer** | Inventory + customer health | Oracle Retail Suite · Fusion CX · Loyalty · **Oracle DB** (POS, store ops) | Copilot for store managers; Teams to district leadership |
+| **Public Sector** | Citizen service + grants | Public Sector Cloud · Fusion HCM · **Oracle DB** (case management, eligibility systems) | Copilot for caseworkers; Graph for case routing/SLA |
 
 Packaged with SI partners (Accenture, Deloitte, EY, Capgemini) — partner co-funded enablement programme.
 
 ---
 
-## 7. The build plan — phased roadmap
+## 8. The build plan — phased roadmap
 
 | Phase | Window | Capability | Status |
 |---|---|---|---|
@@ -165,14 +184,14 @@ Packaged with SI partners (Accenture, Deloitte, EY, Capgemini) — partner co-fu
 
 ---
 
-## 8. The org — ownership across Microsoft
+## 9. The org — ownership across Microsoft
 
 Proposed RACI. Each row has one **A**ccountable owner.
 
 | Workstream | A (Accountable) | R (Responsible) | C (Consulted) |
 |---|---|---|---|
 | Reference architecture (P1/P2/P3) | Azure AI Foundry leadership | Foundry · Fabric · Agent 365 eng | Oracle joint architecture council |
-| Ontology Bridge | Fabric leadership | Fabric semantic + Industry CTO | Oracle Fusion product |
+| Ontology Bridge | Fabric leadership | Fabric semantic + Industry CTO | Oracle product (Fusion + Database) |
 | Governance Bridge | Purview leadership | Purview eng · Compliance | Oracle Data Safe / Audit Vault product |
 | Agent 365 + A2A productisation | M365 Copilot leadership | Agent 365 eng · Copilot eng | Foundry |
 | MCP servers for Oracle estate | Foundry DevEx | Foundry SDK eng · Oracle developer relations | Partner / OSS community |
@@ -185,7 +204,7 @@ Proposed RACI. Each row has one **A**ccountable owner.
 
 ---
 
-## 9. Asks — what we need from this room
+## 10. Asks — what we need from this room
 
 Concrete, named, time-bound:
 
@@ -202,7 +221,7 @@ Concrete, named, time-bound:
 
 ---
 
-## 10. Risks and mitigations
+## 11. Risks and mitigations
 
 | Risk | Mitigation |
 |---|---|
@@ -215,7 +234,7 @@ Concrete, named, time-bound:
 
 ---
 
-## 11. First 30 / 60 / 90 days
+## 12. First 30 / 60 / 90 days
 
 **Day 0 — this meeting:** lock the strategy, name the exec sponsor, accept the RACI, fund the FY26 H1 milestones.
 
