@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Anchor,
   Boxes,
   ClipboardList,
   Handshake,
@@ -84,6 +85,7 @@ export default function Sidebar() {
   const isJointValue = pathname.startsWith("/joint-value");
   const isCompetitive = pathname.startsWith("/competitive");
   const isHowWeEnable = pathname.startsWith("/how-we-enable");
+  const isOdaFrontier = pathname.startsWith("/oda-frontier");
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r border-white/10 bg-navy-900/60">
@@ -139,15 +141,26 @@ export default function Sidebar() {
         </div>
       </div>
 
-      <PrimaryLink
-        href="/how-we-enable"
-        active={isHowWeEnable}
-        icon={<Rocket className="h-4 w-4 text-iq-yellow" />}
-        label="How We Enable This"
-        badge="Stack"
-        description="Three integration patterns and two accelerators."
-        activeAccent="yellow"
-      />
+      <div className="space-y-2.5">
+        <PrimaryLink
+          href="/oda-frontier"
+          active={isOdaFrontier}
+          icon={<Anchor className="h-4 w-4 text-oracle-red" />}
+          label="OD@A · Frontier"
+          badge="Anchor"
+          description="OD@A as the anchor — the customer journey and technical architecture."
+          activeAccent="oracle"
+        />
+        <PrimaryLink
+          href="/how-we-enable"
+          active={isHowWeEnable}
+          icon={<Rocket className="h-4 w-4 text-iq-yellow" />}
+          label="How We Enable This"
+          badge="Stack"
+          description="Three integration patterns and two accelerators."
+          activeAccent="yellow"
+        />
+      </div>
 
       <div className="mx-3 my-4 h-px bg-white/10" />
 
