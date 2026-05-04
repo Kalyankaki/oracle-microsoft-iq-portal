@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   Anchor,
   Boxes,
+  Briefcase,
   ClipboardList,
   Handshake,
   HeartPulse,
@@ -86,6 +87,7 @@ export default function Sidebar() {
   const isCompetitive = pathname.startsWith("/competitive");
   const isHowWeEnable = pathname.startsWith("/how-we-enable");
   const isOdaFrontier = pathname.startsWith("/oda-frontier");
+  const isSiOpportunity = pathname.startsWith("/si-opportunity");
 
   return (
     <aside className="flex w-72 shrink-0 flex-col border-r border-white/10 bg-navy-900/60">
@@ -203,6 +205,28 @@ export default function Sidebar() {
           );
         })}
       </nav>
+
+      <div className="mx-3 my-4 h-px bg-white/10" />
+
+      <div className="px-5 pb-3">
+        <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
+          Partner motion
+        </div>
+        <div className="mt-1 flex items-center gap-2 text-sm font-semibold">
+          <Briefcase className="h-4 w-4 text-iq-yellow" />
+          The system integrators
+        </div>
+      </div>
+
+      <PrimaryLink
+        href="/si-opportunity"
+        active={isSiOpportunity}
+        icon={<Briefcase className="h-4 w-4 text-iq-yellow" />}
+        label="SI Opportunity"
+        badge="Partners"
+        description="Scale, two-act revenue arc, and the practice to build."
+        activeAccent="yellow"
+      />
 
       <div className="mt-auto border-t border-white/10 p-5">
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
