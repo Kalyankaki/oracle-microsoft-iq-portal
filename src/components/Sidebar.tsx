@@ -7,6 +7,7 @@ import {
   Boxes,
   Briefcase,
   ClipboardList,
+  Compass,
   Handshake,
   HeartPulse,
   Rocket,
@@ -87,6 +88,7 @@ export default function Sidebar() {
   const isCompetitive = pathname.startsWith("/competitive");
   const isHowWeEnable = pathname.startsWith("/how-we-enable");
   const isOdaFrontier = pathname.startsWith("/oda-frontier");
+  const isFrontierTransformation = pathname.startsWith("/frontier-transformation");
   const isSiOpportunity = pathname.startsWith("/si-opportunity");
 
   return (
@@ -152,6 +154,15 @@ export default function Sidebar() {
           badge="Anchor"
           description="OD@A as the anchor — the customer journey and technical architecture."
           activeAccent="oracle"
+        />
+        <PrimaryLink
+          href="/frontier-transformation"
+          active={isFrontierTransformation}
+          icon={<Compass className="h-4 w-4 text-iq-teal" />}
+          label="Biz + Infra Ops"
+          badge="Frontier"
+          description="Three workstreams: data estate, biz ops, infra ops with WVI + AIOps."
+          activeAccent="teal"
         />
         <PrimaryLink
           href="/how-we-enable"
